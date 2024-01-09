@@ -15,10 +15,10 @@ import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 abstract public class DisplayObject {
 
-	abstract public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected);
+    abstract public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected);
 
-	abstract public Object drawObject();
+    abstract public Object drawObject();
 
-	abstract public DisplayRectBounds getBounds();
+    abstract public DisplayRectBounds getBounds();
 
 }

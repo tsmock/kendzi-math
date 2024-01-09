@@ -30,7 +30,7 @@ public class LineUtil {
 
     /**
      * Determinate if line is crossing Line segment.
-     * 
+     *
      * @param firstLinePoint first point of line
      * @param secondLinePoint second point of line it have to be different from
      *            first point
@@ -42,12 +42,12 @@ public class LineUtil {
             Point2d lineSegmentB) {
         // TODO test if begin or end of Line Segment is exactly on line !!!
         // Thanks numerical error for now this should work ;)
-        return matrixDet(firstLinePoint, secondLinePoint, lineSegmentA)
-                * matrixDet(firstLinePoint, secondLinePoint, lineSegmentB) > 0;
+        return matrixDet(firstLinePoint, secondLinePoint, lineSegmentA) * matrixDet(firstLinePoint, secondLinePoint,
+                lineSegmentB) > 0;
 
     }
 
-    /**	Det of matrix.
+    /**    Det of matrix.
      * @param A first column of matrix
      * @param B second column of matrix
      * @param Z third column of matrix
@@ -68,23 +68,20 @@ public class LineUtil {
      * @param Zy y of point Z
      * @return if point Z lays on Line Segment |AB|
      */
-    private static boolean pointLiesOnLineSegment(double Ax, double Ay, double Bx, double By, double Zx,
-            double Zy) {
+    private static boolean pointLiesOnLineSegment(double Ax, double Ay, double Bx, double By, double Zx, double Zy) {
         double det; // det of matrix
 
         det = Ax * By + Bx * Zy + Zx * Ay - Zx * By - Ax * Zy - Bx * Ay;
         if (det != 0) {
             return false;
         } else {
-            if (Math.min(Ax, Bx) <= Zx && Zx <= Math.max(Ax, Bx)
-                    && Math.min(Ay, By) <= Zy && Zy <= Math.max(Ay, By)) {
+            if (Math.min(Ax, Bx) <= Zx && Zx <= Math.max(Ax, Bx) && Math.min(Ay, By) <= Zy && Zy <= Math.max(Ay, By)) {
                 return true;
             } else {
                 return false;
             }
         }
     }
-
 
     /** TODO
      * @param Ax line first point
@@ -105,8 +102,7 @@ public class LineUtil {
             return new Point2d(sD.x, sD.y);
         } else {
             // if none of Line Segment points lies on the line
-            if (matrixDet(lA, lB, sC)
-                    * matrixDet(lA, lB, sD) >= 0) {
+            if (matrixDet(lA, lB, sC) * matrixDet(lA, lB, sD) >= 0) {
                 // both Line Segment end lies on the same site of Line so they don't crossing
                 return null;
             } else {
@@ -145,12 +141,10 @@ public class LineUtil {
         } else {
             // if none of points lies on line segment
             // zaden punkt nie nalezy do drugego odcinka
-            if (matrixDet(A, B, C)
-                    * matrixDet(A, B, D) >= 0) {
+            if (matrixDet(A, B, C) * matrixDet(A, B, D) >= 0) {
                 //System.out.println("Odcinki sie NIE przecinaja");
                 return null;
-            } else if (matrixDet(C, D, A)
-                    * matrixDet(C, D, B) >= 0) {
+            } else if (matrixDet(C, D, A) * matrixDet(C, D, B) >= 0) {
                 //System.out.println("Odcinki sie NIE przecinaja");
                 return null;
             } else {
@@ -161,7 +155,6 @@ public class LineUtil {
             }
         }
     }
-
 
     /**
      * @param p1
@@ -180,8 +173,6 @@ public class LineUtil {
 
         Vector2d qp = new Vector2d(q.x - p.x, q.y - p.y);
         double rs = Vector2dUtil.cross(r, s);
-
-
 
         //double t = Vector2dUtil.cross(qp, s) / rs;
         double u = Vector2dUtil.cross(qp, r) / rs;
@@ -212,8 +203,8 @@ public class LineUtil {
      * @return
      * XXX move to LineXXX
      */
-    public static Point2d lineCrossPoint(double Ax1, double Ay1, double Ax2,
-            double Ay2, double Bx1, double By1, double Bx2, double By2) {
+    public static Point2d lineCrossPoint(double Ax1, double Ay1, double Ax2, double Ay2, double Bx1, double By1,
+            double Bx2, double By2) {
         //	calc A, B, C for line
         //	double
         double A1 = Ay1 - Ay2;
@@ -224,7 +215,6 @@ public class LineUtil {
         double A2 = By1 - By2;
         double B2 = Bx2 - Bx1;
         double C2 = Bx1 * By2 - Bx2 * By1;
-
 
         return LineLinear2d.collide(A1, B1, C1, A2, B2, C2);
     }

@@ -10,8 +10,7 @@ import kendzi.swing.ui.panel.equation.EquationLayer;
 
 public class DebugLayer extends EquationLayer {
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp) {
         try {
 
             for (Object key : this.objects.keySet()) {
@@ -70,11 +69,9 @@ public class DebugLayer extends EquationLayer {
         }
 
         // XXX
-        DebugDisplay
-                .getDebugDisplay()
-                .getMapComponent()
-                .setParms(bounds.minX + bounds.maxX / 2, bounds.minY + bounds.maxY / 2, bounds.minX - 1, bounds.maxX + 1,
-                        bounds.minY - 1, bounds.maxY + 1);
+        DebugDisplay.getDebugDisplay().getMapComponent()
+                .setParms(bounds.minX + bounds.maxX / 2, bounds.minY + bounds.maxY / 2, bounds.minX - 1,
+                        bounds.maxX + 1, bounds.minY - 1, bounds.maxY + 1);
 
         // XXX do with events!
         DebugDisplay.getDebugDisplay().getMapComponent().repaint(300);

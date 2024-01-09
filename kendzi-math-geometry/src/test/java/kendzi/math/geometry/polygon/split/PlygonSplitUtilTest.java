@@ -9,10 +9,10 @@ import java.util.List;
 
 import javax.vecmath.Point2d;
 
+import org.junit.Test;
+
 import kendzi.math.geometry.line.LinePoints2d;
 import kendzi.math.geometry.polygon.split.PlygonSplitUtil.SplitResult;
-
-import org.junit.Test;
 
 /**
  * Tests for polygon split util.
@@ -21,9 +21,7 @@ public class PlygonSplitUtilTest {
 
     private static final double EPSILON = 0.00001d;
 
-    @SuppressWarnings("javadoc")
-    @Test
-    public void rect() {
+    @SuppressWarnings("javadoc") @Test public void rect() {
         Point2d p0 = debugPoint(0, -1, -1);
         Point2d p1 = debugPoint(1, 1, -1);
         Point2d p2 = debugPoint(2, 1, 1);
@@ -49,9 +47,7 @@ public class PlygonSplitUtilTest {
 
     }
 
-    @SuppressWarnings("javadoc")
-    @Test
-    public void oneSiteOfLine() {
+    @SuppressWarnings("javadoc") @Test public void oneSiteOfLine() {
         Point2d p0 = debugPoint(0, -1, -1);
         Point2d p1 = debugPoint(1, 1, -1);
         Point2d p2 = debugPoint(2, 1, 1);
@@ -81,9 +77,7 @@ public class PlygonSplitUtilTest {
 
     }
 
-    @SuppressWarnings("javadoc")
-    @Test
-    public void polygon1() {
+    @SuppressWarnings("javadoc") @Test public void polygon1() {
         // polygon points
         Point2d p0 = debugPoint(0, -1, -1);
         Point2d p1 = debugPoint(1, 0, 1);
@@ -115,9 +109,7 @@ public class PlygonSplitUtilTest {
 
     }
 
-    @SuppressWarnings("javadoc")
-    @Test
-    public void saw1() {
+    @SuppressWarnings("javadoc") @Test public void saw1() {
         List<Point2d> polygon = saw();
 
         LinePoints2d line = new LinePoints2d(debugPoint("l1", 0, 0), debugPoint("l2", 1, 0));
@@ -140,9 +132,7 @@ public class PlygonSplitUtilTest {
         assertEquals(3, split.getRightPolygons().get(3).size());
     }
 
-    @SuppressWarnings("javadoc")
-    @Test
-    public void sawLess1() {
+    @SuppressWarnings("javadoc") @Test public void sawLess1() {
         // the points on split lines
         List<Point2d> polygon = sawLess();
 
@@ -168,9 +158,7 @@ public class PlygonSplitUtilTest {
         assertEquals(3, split.getRightPolygons().get(1).size());
     }
 
-    @SuppressWarnings("javadoc")
-    @Test
-    public void spiral1() {
+    @SuppressWarnings("javadoc") @Test public void spiral1() {
         // The points on split lines.
         List<Point2d> polygon = spiral();
 
@@ -316,8 +304,7 @@ public class PlygonSplitUtilTest {
 
             private static final long serialVersionUID = 1L;
 
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
             }
         };
@@ -329,7 +316,8 @@ public class PlygonSplitUtilTest {
 
         assertEquals("polygons sizes don't equals", expectedListSize, actual.size());
 
-        permute: for (int p = 0; p < expectedListSize; p++) {
+        permute:
+        for (int p = 0; p < expectedListSize; p++) {
             for (int i = 0; i < expectedListSize; i++) {
                 if (!expected.get((i + p) % expectedListSize).epsilonEquals(actual.get(i), EPSILON)) {
                     continue permute;

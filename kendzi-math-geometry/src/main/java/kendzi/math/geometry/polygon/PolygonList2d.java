@@ -44,9 +44,9 @@ public class PolygonList2d {
      *
      * @param pPoints points
      */
-    public PolygonList2d(Point2d ... pPoints) {
+    public PolygonList2d(Point2d... pPoints) {
         List<Point2d> ret = new ArrayList<Point2d>(pPoints.length);
-        for(Point2d p : pPoints) {
+        for (Point2d p : pPoints) {
             ret.add(p);
         }
 
@@ -74,14 +74,12 @@ public class PolygonList2d {
         this.points = pPoints;
     }
 
-
-
-
     public void union(PolygonList2d pPolygon) {
         // TODO !!!
         //        suma
         throw new RuntimeException("TODO");
     }
+
     public void difference(PolygonList2d pPolygon) {
         // TODO !!!
         //        roznica
@@ -101,7 +99,7 @@ public class PolygonList2d {
 
     /**
      * Reverse point order in list
-     * 
+     *
      * @param polygon
      * @return
      */

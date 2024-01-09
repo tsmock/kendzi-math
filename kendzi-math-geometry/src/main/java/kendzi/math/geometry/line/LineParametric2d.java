@@ -46,7 +46,7 @@ public class LineParametric2d {
         double B = -this.U.x;
         double A = this.U.y;
 
-        double C = - (A * x + B * y);
+        double C = -(A * x + B * y);
         return new LineLinear2d(A, B, C);
     }
 
@@ -68,11 +68,8 @@ public class LineParametric2d {
         return ortagonalRight.dot(direction) > -epsilon;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "LineParametric2d [A=" + A + ", U=" + U + "]";
     }
-
-
 
 }

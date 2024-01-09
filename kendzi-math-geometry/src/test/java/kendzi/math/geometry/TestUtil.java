@@ -5,7 +5,7 @@ import javax.vecmath.Vector2d;
 
 /**
  * import static kendzi.math.geometry.TestUtil.*;
- * 
+ *
  * @author Tomasz Kedziora (Kendzi)
  *
  */

@@ -25,24 +25,26 @@ public class Ray3d {
     public Point3d getPoint() {
         return point;
     }
+
     /**
      * @param point the point to set
      */
     public void setPoint(Point3d point) {
         this.point = point;
     }
+
     /**
      * @return the vector
      */
     public Vector3d getVector() {
         return vector;
     }
+
     /**
      * @param vector the vector to set
      */
     public void setVector(Vector3d vector) {
         this.vector = vector;
     }
-
 
 }

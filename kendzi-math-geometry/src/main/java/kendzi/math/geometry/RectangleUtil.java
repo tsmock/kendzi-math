@@ -15,27 +15,24 @@ import javax.vecmath.Point2d;
 import javax.vecmath.Tuple2d;
 import javax.vecmath.Vector2d;
 
-import kendzi.math.geometry.rectangle.RectanglePointVector2d;
-
 import org.apache.log4j.Logger;
 
+import kendzi.math.geometry.rectangle.RectanglePointVector2d;
 
 /**
  * Basic function on rectangles.
- * 
+ *
  * @author Tomasz Kędziora (Kendzi)
  */
 public class RectangleUtil {
 
     /** Log. */
-    @SuppressWarnings("unused")
-    private static final Logger log = Logger.getLogger(RectangleUtil.class);
-
+    @SuppressWarnings("unused") private static final Logger log = Logger.getLogger(RectangleUtil.class);
 
     /**
      * For given direction vector, calculate smallest rectangle with all points
      * in side.
-     * 
+     *
      * @param points set of points
      * @param direction direction vector
      * @return smallest rectangle for given direction
@@ -74,10 +71,8 @@ public class RectangleUtil {
         double height = maxOrtagonal - minOrtagonal;
         double width = maxVector - minVector;
 
-        Point2d point = new Point2d(
-                vector.x * minVector + orthogonal.x * minOrtagonal,
-                vector.y * minVector + orthogonal.y * minOrtagonal
-                );
+        Point2d point = new Point2d(vector.x * minVector + orthogonal.x * minOrtagonal,
+                vector.y * minVector + orthogonal.y * minOrtagonal);
 
         return new RectanglePointVector2d(width, height, point, vector, true);
     }
@@ -85,19 +80,19 @@ public class RectangleUtil {
     /**
      * Computes the dot product of the v1 vector and vector v2. Parameter can be
      * point then vector will start from origin and to point.
-     * 
+     *
      * @param v1 first vector
      * @param v2 second vector
      * @return dot product
      * XXX
      */
     private final static double dot(Tuple2d v1, Tuple2d v2) {
-        return v1.x*v2.x + v1.y*v2.y;
+        return v1.x * v2.x + v1.y * v2.y;
     }
 
     /**
      * Finds minimal area rectangle containing set of points.
-     * 
+     *
      * @param points set of points
      * @return vertex of rectangle or null if less then 3 points
      */

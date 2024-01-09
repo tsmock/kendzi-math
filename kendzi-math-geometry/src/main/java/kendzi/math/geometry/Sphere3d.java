@@ -19,7 +19,6 @@ public class Sphere3d {
     private Point3d center;
     private double radius;
 
-
     public Sphere3d() {
         this(new Point3d(), 1);
     }
@@ -30,32 +29,32 @@ public class Sphere3d {
         this.radius = radius;
     }
 
-
     /**
      * @return the center
      */
     public Point3d getCenter() {
         return center;
     }
+
     /**
      * @param center the center to set
      */
     public void setCenter(Point3d center) {
         this.center = center;
     }
+
     /**
      * @return the radius
      */
     public double getRadius() {
         return radius;
     }
+
     /**
      * @param radius the radius to set
      */
     public void setRadius(double radius) {
         this.radius = radius;
     }
-
-
 
 }

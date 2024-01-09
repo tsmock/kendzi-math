@@ -101,21 +101,18 @@ public class CircularList<T extends CircularNode> implements Iterable<T> {
 
         T current = CircularList.this.first;
 
-        @Override
-        public boolean hasNext() {
+        @Override public boolean hasNext() {
             return this.i < CircularList.this.size;
         }
 
-        @Override
-        public T next() {
+        @Override public T next() {
             T ret = this.current;
             this.current = (T) this.current.next();
             this.i++;
             return ret;
         }
 
-        @Override
-        public void remove() {
+        @Override public void remove() {
             throw new RuntimeException("TODO");
         }
 
@@ -123,11 +120,10 @@ public class CircularList<T extends CircularNode> implements Iterable<T> {
 
     /**
      * Make one round around list. Start from first element end on last.
-     * 
+     *
      * @return iterator
      */
-    @Override
-    public Iterator<T> iterator() {
+    @Override public Iterator<T> iterator() {
         return new CircularListIterator();
     }
 

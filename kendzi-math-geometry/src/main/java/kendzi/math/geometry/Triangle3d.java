@@ -18,7 +18,7 @@ public class Triangle3d {
 
     /**
      * Triangle constructor.
-     * 
+     *
      * @param point0
      *            point 0
      * @param point1

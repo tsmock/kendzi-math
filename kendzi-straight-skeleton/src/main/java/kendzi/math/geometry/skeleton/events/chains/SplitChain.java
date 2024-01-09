@@ -7,34 +7,29 @@ import kendzi.math.geometry.skeleton.events.VertexSplitEvent;
 
 public class SplitChain extends Chain {
 
-    private SplitEvent splitEvent;
+    private final SplitEvent splitEvent;
 
     public SplitChain(SplitEvent event) {
         splitEvent = event;
     }
 
-    @Override
-    public Edge getPreviousEdge() {
+    @Override public Edge getPreviousEdge() {
         return splitEvent.getParent().previousEdge;
     }
 
-    @Override
-    public Edge getNextEdge() {
+    @Override public Edge getNextEdge() {
         return splitEvent.getParent().nextEdge;
     }
 
-    @Override
-    public Vertex getPreviousVertex() {
+    @Override public Vertex getPreviousVertex() {
         return splitEvent.getParent().previous();
     }
 
-    @Override
-    public Vertex getNextVertex() {
+    @Override public Vertex getNextVertex() {
         return splitEvent.getParent().next();
     }
 
-    @Override
-    public Vertex getCurrentVertex() {
+    @Override public Vertex getCurrentVertex() {
         return splitEvent.getParent();
     }
 
@@ -49,8 +44,7 @@ public class SplitChain extends Chain {
         return null;
     }
 
-    @Override
-    public ChainType getType() {
+    @Override public ChainType getType() {
         return ChainType.SPLIT;
     }
 }

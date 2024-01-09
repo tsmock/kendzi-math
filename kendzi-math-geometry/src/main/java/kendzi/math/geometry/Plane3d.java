@@ -46,18 +46,21 @@ public class Plane3d {
     public Point3d getPoint() {
         return this.point;
     }
+
     /**
      * @param point the point to set
      */
     public void setPoint(Point3d point) {
         this.point = point;
     }
+
     /**
      * @return the normal
      */
     public Vector3d getNormal() {
         return this.normal;
     }
+
     /**
      * @param normal the normal to set
      */
@@ -65,10 +68,9 @@ public class Plane3d {
         this.normal = normal;
     }
 
-
     /**
      * Calculate Y value on given coordinates X, Z. TODO when point is no exist.
-     * 
+     *
      * @param x coordinates X
      * @param z coordinates Z
      * @return Y value of plane
@@ -84,7 +86,7 @@ public class Plane3d {
 
     /**
      * Calculate Z value on given coordinates X, Y. TODO when point is no exist.
-     * 
+     *
      * @param x coordinates X
      * @param y coordinates Y
      * @return Z value of plane

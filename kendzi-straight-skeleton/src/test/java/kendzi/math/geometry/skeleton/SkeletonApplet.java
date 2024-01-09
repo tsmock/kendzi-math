@@ -23,8 +23,8 @@ import kendzi.math.geometry.polygon.PolygonList2d;
 
 public class SkeletonApplet extends Applet {
     /**
-	 *
-	 */
+     *
+     */
     private static final long serialVersionUID = 1L;
 
     Dimension siz;
@@ -34,10 +34,9 @@ public class SkeletonApplet extends Applet {
 
     List<Polygon> drawableObjects = new ArrayList<Polygon>();
 
-    private DecimalFormat df = new DecimalFormat("0.##");
+    private final DecimalFormat df = new DecimalFormat("0.##");
 
-    @Override
-    public void init() {
+    @Override public void init() {
         this.siz = getSize();
         add(this.reset = new Button("Reset"));
         add(this.recalc = new Button("Recalc"));
@@ -48,8 +47,7 @@ public class SkeletonApplet extends Applet {
 
     }
 
-    @Override
-    public boolean action(Event ev, Object obj) {
+    @Override public boolean action(Event ev, Object obj) {
         if (ev.target == this.reset) {
             clearAll();
             repaint();
@@ -62,8 +60,7 @@ public class SkeletonApplet extends Applet {
         return true;
     }
 
-    @Override
-    public boolean mouseDown(Event ev, int x, int y) {
+    @Override public boolean mouseDown(Event ev, int x, int y) {
         addPoint(x, y);
         repaint();
         return true;
@@ -73,11 +70,9 @@ public class SkeletonApplet extends Applet {
         return "[" + this.df.format(pPoint.x) + "," + this.df.format(pPoint.y) + "]";
     }
 
-    @Override
-    public void paint(Graphics g) {
+    @Override public void paint(Graphics g) {
         g.clearRect(0, 0, this.siz.width, this.siz.height);
-        for (int i = 0; i < this.points.size(); i++) {
-            Point2d point = this.points.get(i);
+        for (Point2d point : this.points) {
             g.setColor(Color.ORANGE);
             g.fillOval((int) point.x - 3, (int) point.y - 3, 7, 7);
 

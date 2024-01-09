@@ -1,6 +1,6 @@
 /**
  * Intersection.
- * 
+ *
  * @author Tomasz Kedziora (Kendzi)
  *
  */

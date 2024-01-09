@@ -14,9 +14,9 @@ import javax.vecmath.Vector2d;
 
 /**
  * Operations on rays.
- * 
+ *
  * @author Tomasz Kedziora (Kendzi)
- * 
+ *
  */
 public class RayUtil {
 
@@ -30,14 +30,13 @@ public class RayUtil {
      */
     static final IntersectPoints EMPTY = new IntersectPoints();
 
-
     private RayUtil() {
 
     }
 
     /**
      * Test if point is on ray with epsilon.
-     * 
+     *
      * @param p
      *            point
      * @param ray
@@ -69,11 +68,11 @@ public class RayUtil {
     /**
      * Calculate intersection points for rays. It can return more then one
      * intersection point when rays overlaps.
-     * 
-     * 
+     *
+     *
      * @see http://geomalgorithms.com/a05-_intersect-1.html
      * @see http://softsurfer.com/Archive/algorithm_0102/algorithm_0102.htm
-     * 
+     *
      * @param r1
      *            first ray
      * @param r2
@@ -266,7 +265,7 @@ public class RayUtil {
 
     /**
      * Perp Dot Product.
-     * 
+     *
      * @param u
      * @param v
      * @return
@@ -279,36 +278,40 @@ public class RayUtil {
      * Result of intersection calculation. If rays intersect in one point
      * variable "intersect is setup. if rays overlaps intersect is setup and end
      * of intersection is set in intersectEnd.
-     * 
+     *
      * @author Tomasz Kedziora (Kendzi)
-     * 
+     *
      */
     public static class IntersectPoints {
 
         /**
          * Intersection point or begin of intersection segment.
          */
-        private Point2d intersect;
+        private final Point2d intersect;
 
         /**
          * Intersection end.
          */
-        private Point2d intersectEnd;
+        private final Point2d intersectEnd;
 
         public IntersectPoints(Point2d intersect, Point2d intersectEnd) {
             super();
             this.intersect = intersect;
             this.intersectEnd = intersectEnd;
         }
+
         public IntersectPoints(Point2d intersect) {
             this(intersect, null);
         }
+
         public IntersectPoints() {
             this(null, null);
         }
+
         public Point2d getIntersect() {
             return intersect;
         }
+
         public Point2d getIntersectEnd() {
             return intersectEnd;
         }

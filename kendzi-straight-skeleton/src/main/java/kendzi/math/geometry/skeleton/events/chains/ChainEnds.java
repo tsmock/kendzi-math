@@ -5,13 +5,13 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 
 public interface ChainEnds {
 
-    public Edge getPreviousEdge();
+    Edge getPreviousEdge();
 
-    public Edge getNextEdge();
+    Edge getNextEdge();
 
-    public Vertex getPreviousVertex();
+    Vertex getPreviousVertex();
 
-    public Vertex getNextVertex();
+    Vertex getNextVertex();
 
-    public Vertex getCurrentVertex();
+    Vertex getCurrentVertex();
 }

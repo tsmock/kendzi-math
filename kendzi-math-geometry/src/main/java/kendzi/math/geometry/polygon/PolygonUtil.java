@@ -189,7 +189,7 @@ public class PolygonUtil {
 
     /**
      * Always returns points ordered as counter clockwise.
-     * 
+     *
      * @param polygon
      *            polygon as list of points
      * @return counter clockwise polygon

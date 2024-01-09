@@ -7,7 +7,7 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 
 /**
  * @author kendzi
- * 
+ *
  */
 public class SplitEvent extends SkeletonEvent {
 
@@ -19,20 +19,18 @@ public class SplitEvent extends SkeletonEvent {
 
     public Edge oppositeEdge;
 
-    private Vertex parent;
+    private final Vertex parent;
 
     /*
      * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
-        return "SplitEvent [v=" + this.v + ", parent=" + (this.parent != null ? this.parent.getPoint() : "null") + ", distance="
-                + this.distance + "]";
+    @Override public String toString() {
+        return "SplitEvent [v=" + this.v + ", parent=" + (this.parent != null ? this.parent.getPoint() : "null")
+                + ", distance=" + this.distance + "]";
     }
 
-    @Override
-    public boolean isObsolete() {
+    @Override public boolean isObsolete() {
         return parent.isProcessed();
     }
 
@@ -44,8 +42,7 @@ public class SplitEvent extends SkeletonEvent {
         return parent;
     }
 
-    @Override
-    public Point2d getPoint() {
+    @Override public Point2d getPoint() {
         return v;
     }
 }

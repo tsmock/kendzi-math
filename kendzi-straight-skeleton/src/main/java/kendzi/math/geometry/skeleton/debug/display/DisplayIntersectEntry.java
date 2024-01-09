@@ -21,14 +21,14 @@ import kendzi.math.geometry.skeleton.events.chains.SplitChain;
 import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 /**
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  */
 public class DisplayIntersectEntry extends DisplayObject {
 
-    private SkeletonEvent intersect;
+    private final SkeletonEvent intersect;
 
-    private Color color;
+    private final Color color;
 
     public DisplayIntersectEntry(SkeletonEvent f, Color pColor) {
         super();
@@ -36,8 +36,7 @@ public class DisplayIntersectEntry extends DisplayObject {
         this.color = pColor;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.intersect == null) {
             return;
@@ -154,17 +153,16 @@ public class DisplayIntersectEntry extends DisplayObject {
 
         g2d.setColor(Color.GRAY);
         if (split.oppositeEdge != null) {
-            DrawUtil.drawLine(split.getOppositeEdge().getBegin(), split.getOppositeEdge().getEnd(), selected, g2d, disp);
+            DrawUtil.drawLine(split.getOppositeEdge().getBegin(), split.getOppositeEdge().getEnd(), selected, g2d,
+                    disp);
         }
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.intersect;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
         return null;
     }
 }

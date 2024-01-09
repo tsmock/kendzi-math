@@ -13,14 +13,13 @@ import kendzi.swing.ui.panel.equation.EquationLayer;
 
 public class SkeletonLayer extends EquationLayer {
 
-    private SkeletonOutput output;
+    private final SkeletonOutput output;
 
     public SkeletonLayer(SkeletonOutput output) {
         this.output = output;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp) {
 
         if (this.output == null) {
             return;

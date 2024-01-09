@@ -4,7 +4,7 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 
 public class FaceNode extends PathQueueNode<FaceNode> {
 
-    private Vertex vertex;
+    private final Vertex vertex;
 
     public FaceNode(Vertex vertex) {
         super();

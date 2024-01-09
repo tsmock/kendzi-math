@@ -5,11 +5,11 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 
 public class SingleEdgeChain extends Chain {
 
-    private Edge oppositeEdge;
+    private final Edge oppositeEdge;
 
-    private Vertex nextVertex;
+    private final Vertex nextVertex;
 
-    private Vertex previousVertex;
+    private final Vertex previousVertex;
 
     public SingleEdgeChain(Edge oppositeEdge, Vertex nextVertex) {
         this.oppositeEdge = oppositeEdge;
@@ -22,33 +22,27 @@ public class SingleEdgeChain extends Chain {
         this.previousVertex = nextVertex.previous();
     }
 
-    @Override
-    public Edge getPreviousEdge() {
+    @Override public Edge getPreviousEdge() {
         return oppositeEdge;
     }
 
-    @Override
-    public Edge getNextEdge() {
+    @Override public Edge getNextEdge() {
         return oppositeEdge;
     }
 
-    @Override
-    public Vertex getPreviousVertex() {
+    @Override public Vertex getPreviousVertex() {
         return previousVertex;
     }
 
-    @Override
-    public Vertex getNextVertex() {
+    @Override public Vertex getNextVertex() {
         return nextVertex;
     }
 
-    @Override
-    public Vertex getCurrentVertex() {
+    @Override public Vertex getCurrentVertex() {
         return null;
     }
 
-    @Override
-    public ChainType getType() {
+    @Override public ChainType getType() {
         return ChainType.SPLIT;
     }
 }

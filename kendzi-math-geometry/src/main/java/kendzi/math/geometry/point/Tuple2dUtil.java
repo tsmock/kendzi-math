@@ -10,9 +10,9 @@ public final class Tuple2dUtil {
 
     /**
      * Computes the distance between this point and point p1.
-     * 
+     *
      * @param p0
-     * 
+     *
      * @param p1
      *            the other point
      * @return

@@ -1,14 +1,22 @@
 package kendzi.math.geometry.skeleton;
 
-import static kendzi.math.geometry.TestUtil.*;
-import static org.junit.Assert.*;
+import static kendzi.math.geometry.TestUtil.p;
+import static kendzi.math.geometry.TestUtil.v;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.vecmath.Point2d;
 import javax.vecmath.Vector2d;
+
+import org.junit.Test;
 
 import kendzi.math.geometry.line.LineLinear2d;
 import kendzi.math.geometry.ray.Ray2d;
@@ -21,12 +29,9 @@ import kendzi.math.geometry.skeleton.events.SkeletonEvent;
 import kendzi.math.geometry.skeleton.utils.LavUtil;
 import kendzi.math.geometry.skeleton.utils.LavUtil.SplitSlavs;
 
-import org.junit.Test;
-
 public class SkeletonInternalTest {
 
-    @Test
-    public void testEdgeBehindBisector_1() {
+    @Test public void testEdgeBehindBisector_1() {
 
         Ray2d bisector = new Ray2d(p(0, -1), v(0, 1));
 
@@ -36,8 +41,7 @@ public class SkeletonInternalTest {
 
     }
 
-    @Test
-    public void testEdgeBehindBisector_2() {
+    @Test public void testEdgeBehindBisector_2() {
 
         Ray2d bisector = new Ray2d(p(0, 0), v(1, 0));
 
@@ -47,8 +51,7 @@ public class SkeletonInternalTest {
 
     }
 
-    @Test
-    public void testEdgeBehindBisector_3() {
+    @Test public void testEdgeBehindBisector_3() {
 
         Ray2d bisector = new Ray2d(p(0, 0), v(0, 1));
 
@@ -58,8 +61,7 @@ public class SkeletonInternalTest {
 
     }
 
-    @Test
-    public void testEdgeBehindBisector_4() {
+    @Test public void testEdgeBehindBisector_4() {
 
         Ray2d bisector = new Ray2d(p(-1, 0.0000001), v(1, 0));
 
@@ -69,8 +71,7 @@ public class SkeletonInternalTest {
 
     }
 
-    @Test
-    public void testMergeLav_1() {
+    @Test public void testMergeLav_1() {
 
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -99,8 +100,7 @@ public class SkeletonInternalTest {
 
     }
 
-    @Test
-    public void testFindSplitIndex_1() {
+    @Test public void testFindSplitIndex_1() {
 
         Edge anyEdge = debugEdge("anyEdge");
         Edge oppositeEdge = debugEdge("oppositeEdge");
@@ -123,8 +123,7 @@ public class SkeletonInternalTest {
         assertEquals(2, split);
     }
 
-    @Test
-    public void testFindSplitIndex_2() {
+    @Test public void testFindSplitIndex_2() {
 
         Edge anyEdge = debugEdge("anyEdge");
         Edge oppositeEdge = debugEdge("oppositeEdge");
@@ -147,8 +146,7 @@ public class SkeletonInternalTest {
         assertEquals(3, split);
     }
 
-    @Test
-    public void testFindSplitIndex_3() {
+    @Test public void testFindSplitIndex_3() {
 
         Edge anyEdge = debugEdge("anyEdge");
         Edge oppositeEdge = debugEdge("oppositeEdge");
@@ -171,8 +169,7 @@ public class SkeletonInternalTest {
         assertEquals(0, split);
     }
 
-    @Test
-    public void testFindSplitIndex_4() {
+    @Test public void testFindSplitIndex_4() {
 
         Edge anyEdge = debugEdge("anyEdge");
         Edge oppositeEdge = debugEdge("oppositeEdge");
@@ -195,8 +192,7 @@ public class SkeletonInternalTest {
         assertEquals(0, split);
     }
 
-    @Test
-    public void testFindSplitLav_1() {
+    @Test public void testFindSplitLav_1() {
 
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -217,8 +213,7 @@ public class SkeletonInternalTest {
         assertLavOrder(new Vertex[] { v4, v5 }, splitLav.getNewLawLeft());
     }
 
-    @Test(expected = RuntimeException.class)
-    public void testFindSplitLav_2() {
+    @Test(expected = RuntimeException.class) public void testFindSplitLav_2() {
 
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -238,8 +233,7 @@ public class SkeletonInternalTest {
         fail();
     }
 
-    @Test()
-    public void testVertexOpositeEdge_1() {
+    @Test() public void testVertexOpositeEdge_1() {
 
         Point2d point = new Point2d(0, 2);
 
@@ -257,8 +251,7 @@ public class SkeletonInternalTest {
         assertEquals(edgePrevious, vertexOppositeEdge);
     }
 
-    @Test()
-    public void testVertexOpositeEdge_2() {
+    @Test() public void testVertexOpositeEdge_2() {
 
         Point2d point = new Point2d(0, 2);
 
@@ -276,8 +269,7 @@ public class SkeletonInternalTest {
         assertEquals(edge, vertexOppositeEdge);
     }
 
-    @Test()
-    public void testVertexOpositeEdge_3() {
+    @Test() public void testVertexOpositeEdge_3() {
 
         Point2d point = new Point2d(0, 2);
 
@@ -295,8 +287,7 @@ public class SkeletonInternalTest {
         assertEquals(edge, vertexOppositeEdge);
     }
 
-    @Test
-    public void createEdgeChain_1() {
+    @Test public void createEdgeChain_1() {
 
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -318,8 +309,7 @@ public class SkeletonInternalTest {
         assertListEquals(new EdgeEvent[] { e1, e3 }, chain);
     }
 
-    @Test
-    public void createEdgeChain_2() {
+    @Test public void createEdgeChain_2() {
 
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -340,8 +330,7 @@ public class SkeletonInternalTest {
         assertListEquals(new EdgeEvent[] { e2, e1, e3 }, chain);
     }
 
-    @Test
-    public void groupLevelEvents_1() {
+    @Test public void groupLevelEvents_1() {
         //
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -365,8 +354,7 @@ public class SkeletonInternalTest {
         assertEquals(PickEvent.class, chain.get(0).getClass());
     }
 
-    @Test()
-    public void cutLavPart() {
+    @Test() public void cutLavPart() {
 
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -386,8 +374,7 @@ public class SkeletonInternalTest {
         assertListEquals(Arrays.asList(v2, v3), cutLavPart);
     }
 
-    @Test()
-    public void cutLavPart_2() {
+    @Test() public void cutLavPart_2() {
 
         Vertex v1 = debugVertex("v1");
         Vertex v2 = debugVertex("v2");
@@ -404,11 +391,10 @@ public class SkeletonInternalTest {
 
         List<Vertex> cutLavPart = LavUtil.cutLavPart(v1, v1);
 
-        assertListEquals(Arrays.asList(v1), cutLavPart);
+        assertListEquals(Collections.singletonList(v1), cutLavPart);
     }
 
-    @Test()
-    public void choseOppositeEdgeLav() {
+    @Test() public void choseOppositeEdgeLav() {
 
         Point2d p1 = debugPoint2d("p0", 0, 0);
         Point2d p2 = debugPoint2d("p1", 1, 0);
@@ -430,8 +416,7 @@ public class SkeletonInternalTest {
         assertEquals(vertex, v1);
     }
 
-    @Test()
-    public void choseOppositeEdgeLav_2() {
+    @Test() public void choseOppositeEdgeLav_2() {
 
         Point2d p1 = debugPoint2d("p1", 0, 0);
         Point2d p2 = debugPoint2d("p2", 0.2, 0);
@@ -465,10 +450,10 @@ public class SkeletonInternalTest {
 
     private EdgeEvent debugEdgeEvent(final String name, Vertex v1, Vertex v2) {
         EdgeEvent event = new EdgeEvent(null, 0, v1, v2) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
-            };
+            }
+
         };
 
         return event;
@@ -476,10 +461,10 @@ public class SkeletonInternalTest {
 
     private EdgeEvent debugEdgeEvent(final String name, Vertex v1, Vertex v2, Point2d point) {
         EdgeEvent event = new EdgeEvent(point, 0, v1, v2) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
-            };
+            }
+
         };
 
         return event;
@@ -495,8 +480,7 @@ public class SkeletonInternalTest {
 
     private Edge debugEdge(final String string) {
         return new Edge(new Point2d(), new Point2d()) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return string;
             }
         };
@@ -505,8 +489,7 @@ public class SkeletonInternalTest {
     private Vertex debugVertex(final String name1) {
 
         return new Vertex() {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name1;
             }
         };
@@ -515,8 +498,7 @@ public class SkeletonInternalTest {
     private Vertex debugVertex(final String name1, Edge edgeLeft, Edge edgeRight) {
 
         Vertex v = new Vertex() {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name1;
             }
         };
@@ -529,8 +511,7 @@ public class SkeletonInternalTest {
     private Vertex debugVertex(final String name1, Point2d p) {
 
         Vertex v = new Vertex(p, 0, null, null, null) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name1;
             }
 
@@ -560,10 +541,10 @@ public class SkeletonInternalTest {
 
     public static Point2d debugPoint2d(final String name, double x, double y) {
         return new Point2d(x, y) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
-            };
+            }
+
         };
     }
 }

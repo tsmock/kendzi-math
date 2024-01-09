@@ -25,9 +25,7 @@ public class PointUtil {
     public static Vector2d rotateCounterClockwise2d(Tuple2d pTuple, double pAngle) {
         double cosA = Math.cos(pAngle);
         double sinA = Math.sin(pAngle);
-        return new Vector2d(
-                pTuple.x * cosA - pTuple.y * sinA,
-                pTuple.x * sinA + pTuple.y * cosA);
+        return new Vector2d(pTuple.x * cosA - pTuple.y * sinA, pTuple.x * sinA + pTuple.y * cosA);
     }
 
     /**
@@ -39,9 +37,7 @@ public class PointUtil {
     public static Vector2d rotateClockwise2d(Tuple2d pTuple, double pAngle) {
         double cosA = Math.cos(pAngle);
         double sinA = Math.sin(pAngle);
-        return new Vector2d(
-                pTuple.x * cosA + pTuple.y * sinA,
-                - pTuple.x * sinA + pTuple.y * cosA);
+        return new Vector2d(pTuple.x * cosA + pTuple.y * sinA, -pTuple.x * sinA + pTuple.y * cosA);
     }
 
     /**
@@ -59,10 +55,7 @@ public class PointUtil {
         double cosA = Math.cos(pAngle);
         double sinA = Math.sin(pAngle);
 
-        return new Vector3d(
-                x,
-                y * cosA - z * sinA,
-                y * sinA + z * cosA);
+        return new Vector3d(x, y * cosA - z * sinA, y * sinA + z * cosA);
 
     }
 
@@ -81,10 +74,7 @@ public class PointUtil {
         double cosB = Math.cos(pAngle);
         double sinB = Math.sin(pAngle);
 
-        return new Vector3d(
-              x * cosB + z * sinB,
-              y,
-              -x * sinB + z * cosB);
+        return new Vector3d(x * cosB + z * sinB, y, -x * sinB + z * cosB);
 
     }
 
@@ -103,13 +93,8 @@ public class PointUtil {
         double cosR = Math.cos(pAngle);
         double sinR = Math.sin(pAngle);
 
-        return new Vector3d(
-              x * cosR - y * sinR,
-              x * sinR + y * cosR,
-              z);
+        return new Vector3d(x * cosR - y * sinR, x * sinR + y * cosR, z);
 
     }
-
-
 
 }

@@ -38,8 +38,7 @@ public class LineSegment2d {
      * XXX better name is intersects ?!
      * @return collision point
      */
-    public static Point2d collide(double x1, double y1, double x2, double y2, double A, double B, double C
-            ) {
+    public static Point2d collide(double x1, double y1, double x2, double y2, double A, double B, double C) {
 
         // XXX TODO FIXME when end of line segment is lies on line
 
@@ -60,6 +59,7 @@ public class LineSegment2d {
 
         return LineUtil.intersectLineSegments(this.begin, lineSegment.begin, v1, v2);
     }
+
     /** Test
      * @param lineSegment
      * @return
@@ -69,8 +69,8 @@ public class LineSegment2d {
         Vector2d v1 = Vector2dUtil.fromTo(this.begin, this.end);
         Vector2d v2 = Vector2dUtil.fromTo(lineSegment.begin, lineSegment.end);
 
-        if (this.begin.equals(lineSegment.begin) || this.begin.equals(lineSegment.end) || this.end.equals(lineSegment.begin)
-                || this.end.equals(lineSegment.end)) {
+        if (this.begin.equals(lineSegment.begin) || this.begin.equals(lineSegment.end) || this.end.equals(
+                lineSegment.begin) || this.end.equals(lineSegment.end)) {
             return null;
         }
         return LineUtil.intersectLineSegments(this.begin, lineSegment.begin, v1, v2);
@@ -84,21 +84,21 @@ public class LineSegment2d {
         Vector2d v1 = Vector2dUtil.fromTo(this.begin, this.end);
         Vector2d v2 = Vector2dUtil.fromTo(lineSegment.begin, lineSegment.end);
 
-        if (this.begin.equals(lineSegment.begin) || this.begin.equals(lineSegment.end) || this.end.equals(lineSegment.begin)
-                || this.end.equals(lineSegment.end)) {
+        if (this.begin.equals(lineSegment.begin) || this.begin.equals(lineSegment.end) || this.end.equals(
+                lineSegment.begin) || this.end.equals(lineSegment.end)) {
             return null;
         }
 
         double sqlEps = epslilon * epslilon;
-        if (this.begin.distanceSquared(lineSegment.begin) < sqlEps || this.begin.distanceSquared(lineSegment.end) < sqlEps
-                || this.end.distanceSquared(lineSegment.begin) < sqlEps || this.end.distanceSquared(lineSegment.end) < sqlEps) {
+        if (this.begin.distanceSquared(lineSegment.begin) < sqlEps
+                || this.begin.distanceSquared(lineSegment.end) < sqlEps
+                || this.end.distanceSquared(lineSegment.begin) < sqlEps
+                || this.end.distanceSquared(lineSegment.end) < sqlEps) {
             return null;
         }
 
-
         return LineUtil.intersectLineSegments(this.begin, lineSegment.begin, v1, v2);
     }
-
 
     private static double det(double x, double y, double A, double B, double C) {
         return A * x + B * y + C;
@@ -160,7 +160,6 @@ public class LineSegment2d {
         this.openEnd = openEnd;
     }
 
-
     // dist_Point_to_Segment(): get the distance of a point to a segment.
     //  Input:  a Point P and a Segment S (in any dimension)
     //  Return: the shortest distance from P to S
@@ -176,14 +175,13 @@ public class LineSegment2d {
         Vector2d w = new Vector2d(P);
         w.sub(S.getBegin());
 
-
         double c1 = w.dot(v);//dot(w,v);
-        if ( c1 <= 0 ) {
+        if (c1 <= 0) {
             return d(P, S.getBegin());
         }
 
         double c2 = v.dot(v);//dot(v,v);
-        if ( c2 <= c1 ) {
+        if (c2 <= c1) {
             return d(P, S.getEnd());
         }
 
@@ -209,17 +207,9 @@ public class LineSegment2d {
      *
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
-        return "LineSegment2d "
-                + (openBegin ? "(" : "<")
-                + begin
-                + ", "
-                + end
-                + (openEnd ? ")" : ">")
-                ;
+    @Override public String toString() {
+        return "LineSegment2d " + (openBegin ? "(" : "<") + begin + ", " + end + (openEnd ? ")" : ">");
     }
-
 
 }
 

@@ -83,7 +83,6 @@ public class LinePoints2d {
         return new LineParametric2d(getPointA(), getVectorU());
     }
 
-
     /** Determinate if point is over line or on line.
      * @param pPoint point
      * @return point is over line or on line
@@ -98,12 +97,8 @@ public class LinePoints2d {
      *
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "L (" + this.p1 + ") -> (" + this.p2 + ")";
     }
-
-
-
 
 }

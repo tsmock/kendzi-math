@@ -7,7 +7,7 @@ import kendzi.math.geometry.skeleton.path.FaceNode;
 
 /**
  * @author kendzi
- * 
+ *
  */
 public class Vertex extends CircularNode {
 
@@ -52,19 +52,16 @@ public class Vertex extends CircularNode {
      * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "VertexEntry [v=" + this.point + ", processed=" + this.processed + ", bisector=" + this.bisector
                 + ", previousEdge=" + this.previousEdge + ", nextEdge=" + this.nextEdge;
     }
 
-    @Override
-    public Vertex next() {
+    @Override public Vertex next() {
         return (Vertex) super.next();
     }
 
-    @Override
-    public Vertex previous() {
+    @Override public Vertex previous() {
         return (Vertex) super.previous();
     }
 
@@ -104,8 +101,7 @@ public class Vertex extends CircularNode {
         this.processed = processed;
     }
 
-    @Deprecated
-    public void setBisector(Ray2d bisector) {
+    @Deprecated public void setBisector(Ray2d bisector) {
         this.bisector = bisector;
     }
 

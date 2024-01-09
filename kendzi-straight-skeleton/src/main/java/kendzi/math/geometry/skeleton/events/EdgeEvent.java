@@ -6,8 +6,8 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 
 public class EdgeEvent extends SkeletonEvent {
 
-    private Vertex previousVertex;
-    private Vertex nextVertex;
+    private final Vertex previousVertex;
+    private final Vertex nextVertex;
 
     public EdgeEvent(Point2d point, double distance, Vertex previousVertex, Vertex nextVertex) {
         super(point, distance);
@@ -27,15 +27,14 @@ public class EdgeEvent extends SkeletonEvent {
      * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
-        return "EdgeEvent [v=" + this.v + ", previousVertex="
-                + (this.previousVertex != null ? this.previousVertex.getPoint() : "null") + ", nextVertex="
-                + (this.nextVertex != null ? this.nextVertex.getPoint() : "null") + ", distance=" + this.distance + "]";
+    @Override public String toString() {
+        return "EdgeEvent [v=" + this.v + ", previousVertex=" + (this.previousVertex != null ?
+                this.previousVertex.getPoint() :
+                "null") + ", nextVertex=" + (this.nextVertex != null ? this.nextVertex.getPoint() : "null")
+                + ", distance=" + this.distance + "]";
     }
 
-    @Override
-    public boolean isObsolete() {
+    @Override public boolean isObsolete() {
         return previousVertex.isProcessed() || nextVertex.isProcessed();
     }
 }

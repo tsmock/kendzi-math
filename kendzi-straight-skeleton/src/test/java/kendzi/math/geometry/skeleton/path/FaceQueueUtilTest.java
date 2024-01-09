@@ -1,17 +1,19 @@
 package kendzi.math.geometry.skeleton.path;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import javax.vecmath.Point2d;
 
-import kendzi.math.geometry.skeleton.circular.Edge;
-
 import org.junit.Test;
+
+import kendzi.math.geometry.skeleton.circular.Edge;
 
 public class FaceQueueUtilTest {
 
-    @Test
-    public void test1() {
+    @Test public void test1() {
         FaceNode n1 = debugNewQueue("n1", true);
         FaceNode n2 = debugNewQueue("n2");
         PathQueue<FaceNode> q1 = n1.list();
@@ -26,8 +28,7 @@ public class FaceQueueUtilTest {
         assertTrue(((FaceQueue) q2).isClosed());
     }
 
-    @Test
-    public void test2() {
+    @Test public void test2() {
         FaceNode n1 = debugNewQueue("n1", true);
         FaceNode n2 = debugNode("n2");
 
@@ -45,8 +46,7 @@ public class FaceQueueUtilTest {
         assertTrue(((FaceQueue) q2).isClosed());
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void test3() {
+    @Test(expected = IllegalStateException.class) public void test3() {
         FaceNode n1 = debugNewQueue("n1", true);
         FaceNode n2 = debugNode("n2");
         FaceNode n3 = debugNode("n3");
@@ -59,8 +59,7 @@ public class FaceQueueUtilTest {
         fail();
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void test4() {
+    @Test(expected = IllegalStateException.class) public void test4() {
         FaceNode n1 = debugNewQueue("n1", true);
         FaceNode n2 = debugNewQueue("n2", true);
         // connecting two queues with different edges
@@ -69,8 +68,7 @@ public class FaceQueueUtilTest {
         fail();
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void test5() {
+    @Test(expected = IllegalStateException.class) public void test5() {
         FaceNode n1 = debugNewQueue("n1", true);
         FaceNode n2 = debugNewQueue("n2", true);
 
@@ -81,8 +79,7 @@ public class FaceQueueUtilTest {
 
     private FaceNode debugNode(final String name) {
         return new FaceNode(null) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
             }
         };
@@ -91,8 +88,7 @@ public class FaceQueueUtilTest {
     private FaceNode debugNewQueue(final String name, boolean edge) {
         FaceQueue fq = new FaceQueue();
         FaceNode fn = new FaceNode(null) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
             }
         };

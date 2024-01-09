@@ -4,9 +4,9 @@ import kendzi.math.geometry.skeleton.utils.ValidateUtil;
 
 /**
  * Util for face queue.
- * 
+ *
  * @author Tomasz Kedziora (Kendzi)
- * 
+ *
  */
 public class FaceQueueUtil {
 
@@ -18,7 +18,7 @@ public class FaceQueueUtil {
      * Connect two nodes queue. Id both nodes comes from the same queue, queue
      * is closed. If nodes are from different queues nodes are moved to one of
      * them.
-     * 
+     *
      * @param firstFace
      *            first face queue
      * @param secondFace

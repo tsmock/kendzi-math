@@ -21,7 +21,7 @@ import kendzi.swing.ui.panel.equation.EquationDisplay;
  */
 public class DisplayLineParametric2d extends DisplayObject {
 
-    private LineParametric2d lineParametric2d;
+    private final LineParametric2d lineParametric2d;
 
     /**
      * @param polygon
@@ -31,8 +31,7 @@ public class DisplayLineParametric2d extends DisplayObject {
         this.lineParametric2d = lineParametric2d;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.lineParametric2d == null) {
             return;
@@ -88,7 +87,7 @@ public class DisplayLineParametric2d extends DisplayObject {
             prosta.add(p);
         }
 
-        if (prosta.size() == 2 ) {
+        if (prosta.size() == 2) {
             Point2d p1 = prosta.get(0);
             Point2d p2 = prosta.get(1);
 
@@ -97,25 +96,18 @@ public class DisplayLineParametric2d extends DisplayObject {
             int x2 = (int) disp.xPositionToPixel(p2.x);
             int y2 = (int) disp.yPositionToPixel(p2.y);
 
-            g2d.drawLine(
-                    x1,
-                    y1,
-                    x2,
-                    y2);
+            g2d.drawLine(x1, y1, x2, y2);
 
         } else if (prosta.size() > 2) {
             System.err.println("something is wrong: " + prosta.size());
         }
     }
 
-
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.lineParametric2d;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
 
         return null;
     }

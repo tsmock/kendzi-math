@@ -6,8 +6,13 @@
 
 package kendzi.math.geometry.skeleton;
 
-import static kendzi.math.geometry.skeleton.SkeletonTestUtil.*;
-import static org.junit.Assert.*;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.assertExpectedPoints;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.getFacePoints;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.p;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.validate;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.visualizeResults;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.writeExpectedOutput;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,24 +20,22 @@ import java.util.List;
 
 import javax.vecmath.Point2d;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import kendzi.math.geometry.TestUtil;
 import kendzi.math.geometry.polygon.PolygonList2d;
 import kendzi.math.geometry.skeleton.debug.VisualDebugger;
-
-import org.junit.Before;
-import org.junit.Test;
 
 public class SkeletonLevelEventsTest {
 
     private static VisualDebugger vd;
 
-    @Before
-    public void init() {
+    @Before public void init() {
         vd = TestUtil.initVisualDebugger();
     }
 
-    @Test
-    public void skeleton_pickEvent() {
+    @Test public void skeleton_pickEvent() {
 
         vd.clear();
 
@@ -60,8 +63,7 @@ public class SkeletonLevelEventsTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_multiEdgeEvent() {
+    @Test public void skeleton_multiEdgeEvent() {
 
         vd.clear();
 
@@ -93,8 +95,7 @@ public class SkeletonLevelEventsTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTest_cross_T1() {
+    @Test public void skeletonTest_cross_T1() {
 
         vd.clear();
 
@@ -130,8 +131,7 @@ public class SkeletonLevelEventsTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTest_cross_X1() {
+    @Test public void skeletonTest_cross_X1() {
 
         vd.clear();
 
@@ -171,8 +171,7 @@ public class SkeletonLevelEventsTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTest_double_split() {
+    @Test public void skeletonTest_double_split() {
 
         vd.clear();
 
@@ -205,8 +204,7 @@ public class SkeletonLevelEventsTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTest_double_split2() {
+    @Test public void skeletonTest_double_split2() {
 
         vd.clear();
 
@@ -243,8 +241,7 @@ public class SkeletonLevelEventsTest {
         assertPolygonWithEdges(7, sk);
     }
 
-    @Test
-    public void skeletonTest_multiple() {
+    @Test public void skeletonTest_multiple() {
 
         vd.clear();
 
@@ -309,8 +306,7 @@ public class SkeletonLevelEventsTest {
 
         vd.debug(outer);
 
-        @SuppressWarnings("unchecked")
-        SkeletonOutput sk = Skeleton.skeleton(outer, Arrays.asList(h1, h2, h3, h4));
+        @SuppressWarnings("unchecked") SkeletonOutput sk = Skeleton.skeleton(outer, Arrays.asList(h1, h2, h3, h4));
 
         writeExpectedOutput(outer, sk);
 

@@ -14,9 +14,9 @@ import kendzi.math.geometry.line.LineParametric2d;
 
 /**
  * Math ray. Defined by point and vector.
- * 
+ *
  * @author kendzi
- * 
+ *
  */
 public class Ray2d extends LineParametric2d {
     public Ray2d(Point2d pA, Vector2d pU) {
@@ -45,8 +45,7 @@ public class Ray2d extends LineParametric2d {
         return collide;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "Ray2d [A=" + A + ", U=" + U + "]";
     }
 

@@ -78,7 +78,4 @@ public class LinePoints3d {
         return u;
     }
 
-
-
-
 }

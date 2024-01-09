@@ -308,8 +308,7 @@ public class PlygonSplitUtil {
          * (non-Javadoc)
          * @see java.lang.Object#toString()
          */
-        @Override
-        public String toString() {
+        @Override public String toString() {
             return "Close [beginDistance=" + beginDistance + ", endDistance=" + endDistance + ", direction=" + direction
                     + ", removed=" + removed + ", chain=" + chain + "]";
         }
@@ -511,7 +510,8 @@ public class PlygonSplitUtil {
                  * line. We need to split line segment.
                  */
 
-                Point2d splitPoint = LineUtil.crossLineWithLineSegment(line.getP1(), line.getP2(), begin.point, end.point);
+                Point2d splitPoint = LineUtil.crossLineWithLineSegment(line.getP1(), line.getP2(), begin.point,
+                        end.point);
 
                 enreachRet.add(new Node(splitPoint, ZERO));
             }
@@ -549,8 +549,7 @@ public class PlygonSplitUtil {
             return det == ZERO;
         }
 
-        @Override
-        public String toString() {
+        @Override public String toString() {
             return "Node [point=" + point + ", det=" + det + "]";
         }
     }

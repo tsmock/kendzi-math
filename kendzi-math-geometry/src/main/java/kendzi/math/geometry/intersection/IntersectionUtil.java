@@ -7,7 +7,7 @@ import kendzi.math.geometry.point.Vector3dUtil;
 
 /**
  * Intersection util.
- * 
+ *
  * @author Tomasz Kedziora (Kendzi)
  *
  */

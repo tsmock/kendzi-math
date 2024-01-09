@@ -14,14 +14,14 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 /**
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  */
 public class DisplayLav2 extends DisplayObject {
 
-    private CircularList<Vertex> lav;
+    private final CircularList<Vertex> lav;
 
-    private Color color;
+    private final Color color;
 
     /**
      * @param LAV
@@ -33,8 +33,7 @@ public class DisplayLav2 extends DisplayObject {
         this.color = pColor;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.lav == null) {
             return;
@@ -95,13 +94,11 @@ public class DisplayLav2 extends DisplayObject {
 
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.lav;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
         return null;
     }
 }

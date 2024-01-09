@@ -6,7 +6,12 @@
 
 package kendzi.math.geometry.skeleton;
 
-import static kendzi.math.geometry.skeleton.SkeletonTestUtil.*;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.assertExpectedPoints;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.getFacePoints;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.p;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.validate;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.visualizeResults;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.writeExpectedOutput;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,23 +19,21 @@ import java.util.List;
 
 import javax.vecmath.Point2d;
 
-import kendzi.math.geometry.TestUtil;
-import kendzi.math.geometry.skeleton.debug.VisualDebugger;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import kendzi.math.geometry.TestUtil;
+import kendzi.math.geometry.skeleton.debug.VisualDebugger;
 
 public class SkeletonExtendedTest {
 
     private static VisualDebugger vd;
 
-    @Before
-    public void init() {
+    @Before public void init() {
         vd = TestUtil.initVisualDebugger();
     }
 
-    @Test
-    public void skeleton_1() {
+    @Test public void skeleton_1() {
 
         vd.clear();
 
@@ -132,8 +135,7 @@ public class SkeletonExtendedTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_2() {
+    @Test public void skeleton_2() {
 
         vd.clear();
 
@@ -176,8 +178,7 @@ public class SkeletonExtendedTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_3() {
+    @Test public void skeleton_3() {
 
         vd.clear();
 
@@ -385,8 +386,7 @@ public class SkeletonExtendedTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_4() {
+    @Test public void skeleton_4() {
 
         vd.clear();
 
@@ -769,8 +769,7 @@ public class SkeletonExtendedTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_5() {
+    @Test public void skeleton_5() {
 
         vd.clear();
 
@@ -855,8 +854,7 @@ public class SkeletonExtendedTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_6() {
+    @Test public void skeleton_6() {
 
         vd.clear();
 
@@ -907,8 +905,7 @@ public class SkeletonExtendedTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_7() {
+    @Test public void skeleton_7() {
 
         vd.clear();
 
@@ -973,8 +970,7 @@ public class SkeletonExtendedTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeleton_8() {
+    @Test public void skeleton_8() {
 
         vd.clear();
 

@@ -118,25 +118,22 @@ public class PathQueue<T extends PathQueueNode<T>> implements Iterable<T> {
 
         int i = 0;
 
-        @SuppressWarnings("unchecked")
-        T current = (T) (PathQueue.this.first != null ? PathQueue.this.first.findEnd() : null);
+        @SuppressWarnings("unchecked") T current = (T) (PathQueue.this.first != null ?
+                PathQueue.this.first.findEnd() :
+                null);
 
-        @Override
-        public boolean hasNext() {
+        @Override public boolean hasNext() {
             return this.i < PathQueue.this.size;
         }
 
-        @Override
-        @SuppressWarnings("unchecked")
-        public T next() {
+        @Override @SuppressWarnings("unchecked") public T next() {
             T ret = this.current;
             this.current = (T) this.current.getNext();
             this.i++;
             return ret;
         }
 
-        @Override
-        public void remove() {
+        @Override public void remove() {
             throw new RuntimeException("TODO");
         }
 
@@ -144,11 +141,10 @@ public class PathQueue<T extends PathQueueNode<T>> implements Iterable<T> {
 
     /**
      * Make one round around list. Start from first element end on last.
-     * 
+     *
      * @return iterator
      */
-    @Override
-    public Iterator<T> iterator() {
+    @Override public Iterator<T> iterator() {
         return new PathQueueIterator();
     }
 

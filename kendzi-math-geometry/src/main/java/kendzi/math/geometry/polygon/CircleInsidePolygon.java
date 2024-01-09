@@ -10,11 +10,11 @@ import kendzi.math.geometry.line.LineSegment2d;
 public class CircleInsidePolygon {
 
     /**
-     * 
+     *
      * @see http
      *      ://stackoverflow.com/questions/4279478/maximum-circle-inside-a-non
      *      -convex-polygon
-     * 
+     *
      * @param poly
      * @param epsilon
      * @return

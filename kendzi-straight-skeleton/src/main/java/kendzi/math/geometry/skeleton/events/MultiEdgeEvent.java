@@ -5,7 +5,7 @@ import javax.vecmath.Point2d;
 import kendzi.math.geometry.skeleton.events.chains.EdgeChain;
 
 public class MultiEdgeEvent extends SkeletonEvent {
-    private EdgeChain chain;
+    private final EdgeChain chain;
     private boolean obsolete;
 
     public MultiEdgeEvent(Point2d point, double distance, EdgeChain chain) {
@@ -13,8 +13,7 @@ public class MultiEdgeEvent extends SkeletonEvent {
         this.chain = chain;
     }
 
-    @Override
-    public boolean isObsolete() {
+    @Override public boolean isObsolete() {
         return obsolete;
     }
 

@@ -1,6 +1,8 @@
 package kendzi.math.geometry.polygon;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +13,7 @@ import org.junit.Test;
 
 public class PolygonUtilTest {
 
-    @Test
-    public void makeCounterClockwise() {
+    @Test public void makeCounterClockwise() {
 
         Point2d p1 = point("p1", 0, 0);
         Point2d p2 = point("p2", 1, 0);
@@ -32,8 +33,7 @@ public class PolygonUtilTest {
 
     }
 
-    @Test
-    public void isClockwisePolygon() {
+    @Test public void isClockwisePolygon() {
 
         Point2d p1 = point("p1", 0, 0);
         Point2d p2 = point("p2", 1, 0);
@@ -55,10 +55,10 @@ public class PolygonUtilTest {
 
     private Point2d point(final String string, int i, int j) {
         return new Point2d(i, j) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return string;
-            };
+            }
+
         };
     }
 }

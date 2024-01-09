@@ -6,30 +6,33 @@
 
 package kendzi.math.geometry.skeleton;
 
-import static kendzi.math.geometry.skeleton.SkeletonTestUtil.*;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.assertExpectedPoints;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.getFacePoints;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.p;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.validate;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.visualizeResults;
+import static kendzi.math.geometry.skeleton.SkeletonTestUtil.writeExpectedOutput;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.vecmath.Point2d;
 
-import kendzi.math.geometry.TestUtil;
-import kendzi.math.geometry.skeleton.debug.VisualDebugger;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import kendzi.math.geometry.TestUtil;
+import kendzi.math.geometry.skeleton.debug.VisualDebugger;
 
 public class SkeletonTest {
 
     private static VisualDebugger vd;
 
-    @Before
-    public void init() {
+    @Before public void init() {
         vd = TestUtil.initVisualDebugger();
     }
 
-    @Test
-    public void skeletonTest5() {
+    @Test public void skeletonTest5() {
 
         vd.clear();
 
@@ -64,8 +67,7 @@ public class SkeletonTest {
 
     }
 
-    @Test
-    public void skeletonTest_hole_1() {
+    @Test public void skeletonTest_hole_1() {
 
         vd.clear();
 
@@ -108,8 +110,7 @@ public class SkeletonTest {
 
     }
 
-    @Test
-    public void skeletonTest_hole_2() {
+    @Test public void skeletonTest_hole_2() {
 
         vd.clear();
 
@@ -194,8 +195,7 @@ public class SkeletonTest {
 
     }
 
-    @Test
-    public void skeletonTest6_9() {
+    @Test public void skeletonTest6_9() {
 
         vd.clear();
 
@@ -224,8 +224,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTest7() {
+    @Test public void skeletonTest7() {
 
         vd.clear();
 
@@ -254,8 +253,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTest8() {
+    @Test public void skeletonTest8() {
 
         vd.clear();
 
@@ -290,8 +288,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB1() {
+    @Test public void skeletonTestB1() {
 
         vd.clear();
 
@@ -342,8 +339,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB2() {
+    @Test public void skeletonTestB2() {
 
         vd.clear();
 
@@ -392,8 +388,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB3__() {
+    @Test public void skeletonTestB3__() {
 
         vd.clear();
 
@@ -426,8 +421,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB4__() {
+    @Test public void skeletonTestB4__() {
 
         vd.clear();
 
@@ -456,8 +450,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB5__() {
+    @Test public void skeletonTestB5__() {
 
         vd.clear();
 
@@ -486,8 +479,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB6__() {
+    @Test public void skeletonTestB6__() {
 
         vd.clear();
 
@@ -520,8 +512,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB7__() {
+    @Test public void skeletonTestB7__() {
 
         vd.clear();
 
@@ -552,8 +543,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB8__() {
+    @Test public void skeletonTestB8__() {
 
         vd.clear();
 
@@ -582,8 +572,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTest9() {
+    @Test public void skeletonTest9() {
 
         vd.clear();
 
@@ -618,8 +607,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB10() {
+    @Test public void skeletonTestB10() {
 
         vd.clear();
 
@@ -658,8 +646,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB11() {
+    @Test public void skeletonTestB11() {
 
         vd.clear();
 
@@ -710,8 +697,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB11_b() {
+    @Test public void skeletonTestB11_b() {
 
         vd.clear();
 
@@ -746,8 +732,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB12() {
+    @Test public void skeletonTestB12() {
 
         vd.clear();
 
@@ -798,8 +783,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void skeletonTestB13() {
+    @Test public void skeletonTestB13() {
 
         vd.clear();
 
@@ -859,8 +843,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void circularAddTest() {
+    @Test public void circularAddTest() {
 
         vd.clear();
 
@@ -886,8 +869,7 @@ public class SkeletonTest {
         assertExpectedPoints(expected, getFacePoints(sk));
     }
 
-    @Test
-    public void circularAddTest2() {
+    @Test public void circularAddTest2() {
 
         vd.clear();
 

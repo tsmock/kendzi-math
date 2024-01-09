@@ -58,6 +58,7 @@ public class Quadrilateral2d {
     public void setP3(Point2d p3) {
         this.p3 = p3;
     }
+
     /**
      * @return the p4
      */

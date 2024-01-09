@@ -16,12 +16,12 @@ import kendzi.math.geometry.skeleton.SkeletonOutput;
 import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 /**
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  */
 public class DisplaySkeletonOut extends DisplayObject {
 
-    private SkeletonOutput skeletonOut;
+    private final SkeletonOutput skeletonOut;
 
     /**
      * @param polygon
@@ -31,8 +31,7 @@ public class DisplaySkeletonOut extends DisplayObject {
         this.skeletonOut = skeletonOut;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.skeletonOut == null) {
             return;
@@ -65,13 +64,11 @@ public class DisplaySkeletonOut extends DisplayObject {
         }
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return skeletonOut;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
         return null;
     }
 }

@@ -7,17 +7,16 @@ import java.util.List;
 
 import javax.vecmath.Point2d;
 
-import kendzi.math.geometry.line.LinePoints2d;
-
 import org.junit.Test;
+
+import kendzi.math.geometry.line.LinePoints2d;
 
 /**
  * Tests for enriching polygonal chain.
  */
 public class EnrichPolygonalChainUtilTest {
 
-    @Test
-    public void enrichOpenPolygonalChainByLineCrossing1() {
+    @Test public void enrichOpenPolygonalChainByLineCrossing1() {
 
         Point2d p0 = debugPoint(0, 0, -1);
         Point2d p1 = debugPoint(1, 0, 1);
@@ -37,8 +36,7 @@ public class EnrichPolygonalChainUtilTest {
 
     }
 
-    @Test
-    public void enrichOpenPolygonalChainByLineCrossing2() {
+    @Test public void enrichOpenPolygonalChainByLineCrossing2() {
 
         Point2d p0 = debugPoint(0, 0, -1);
         Point2d p1 = debugPoint(1, 0, 0);
@@ -58,8 +56,7 @@ public class EnrichPolygonalChainUtilTest {
 
     }
 
-    @Test
-    public void enrichClosedPolygonalChainByLineCrossing1() {
+    @Test public void enrichClosedPolygonalChainByLineCrossing1() {
 
         Point2d p0 = debugPoint(0, 0, -1);
         Point2d p1 = debugPoint(1, 0, 1);
@@ -95,8 +92,7 @@ public class EnrichPolygonalChainUtilTest {
 
             private static final long serialVersionUID = 1L;
 
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
             }
         };

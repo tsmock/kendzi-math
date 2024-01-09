@@ -19,11 +19,11 @@ import kendzi.swing.ui.panel.equation.EquationDisplay;
  */
 public class DisplayLineSegment2d extends DisplayObject {
 
-    private LineSegment2d lineSegment2d;
+    private final LineSegment2d lineSegment2d;
 
     private boolean points;
 
-    private Color color;
+    private final Color color;
 
     /**
      * @param p1
@@ -38,8 +38,7 @@ public class DisplayLineSegment2d extends DisplayObject {
         }
 
         this.lineSegment2d = new LineSegment2d(p1, p2) {
-            @Override
-            public boolean equals(Object obj) {
+            @Override public boolean equals(Object obj) {
                 if (obj instanceof LineSegment2d) {
                     LineSegment2d line = (LineSegment2d) obj;
 
@@ -49,8 +48,7 @@ public class DisplayLineSegment2d extends DisplayObject {
                 return false;
             }
 
-            @Override
-            public int hashCode() {
+            @Override public int hashCode() {
 
                 return this.getBegin().hashCode() + 7 * this.getEnd().hashCode();
             }
@@ -81,8 +79,7 @@ public class DisplayLineSegment2d extends DisplayObject {
 
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.lineSegment2d == null) {
             return;
@@ -138,7 +135,7 @@ public class DisplayLineSegment2d extends DisplayObject {
             prosta.add(p);
         }
 
-        if (prosta.size() == 2 ) {
+        if (prosta.size() == 2) {
             Point2d p1 = prosta.get(0);
             Point2d p2 = prosta.get(1);
 
@@ -147,25 +144,18 @@ public class DisplayLineSegment2d extends DisplayObject {
             int x2 = (int) disp.xPositionToPixel(p2.x);
             int y2 = (int) disp.yPositionToPixel(p2.y);
 
-            g2d.drawLine(
-                    x1,
-                    y1,
-                    x2,
-                    y2);
+            g2d.drawLine(x1, y1, x2, y2);
 
         } else if (prosta.size() > 2) {
             System.err.println("something is wrong: " + prosta.size());
         }
     }
 
-
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.lineSegment2d;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
 
         return null;
     }

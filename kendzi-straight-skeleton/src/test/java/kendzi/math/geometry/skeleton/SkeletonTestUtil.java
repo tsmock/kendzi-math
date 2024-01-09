@@ -1,6 +1,7 @@
 package kendzi.math.geometry.skeleton;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,12 +20,13 @@ import kendzi.math.geometry.skeleton.debug.display.DisplaySkeletonOut;
 
 public class SkeletonTestUtil {
 
-    private static VisualDebugger vd = TestUtil.initVisualDebugger();
+    private static final VisualDebugger vd = TestUtil.initVisualDebugger();
 
     public static void assertOutlineInSkelet(List<Point2d> polygon, SkeletonOutput sk) {
         Set<Point2d> outline = new HashSet<Point2d>(polygon);
 
-        outPoint: for (Point2d out : outline) {
+        outPoint:
+        for (Point2d out : outline) {
 
             for (EdgeOutput edgeOutput : sk.getEdgeOutputs()) {
                 PolygonList2d polygonList2d = edgeOutput.getPolygon();
@@ -61,7 +63,7 @@ public class SkeletonTestUtil {
     }
 
     public static void assertExpectedPoints(List<Point2d> expectedList, List<Point2d> givenList) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (Point2d expected : expectedList) {
             if (!containsEpsilon(givenList, expected)) {
                 sb.append(String.format("can't find expected point (%s, %s) in given list\n", expected.x, expected.y));
@@ -123,8 +125,7 @@ public class SkeletonTestUtil {
         }
 
         Comparator<Point2d> c = new Comparator<Point2d>() {
-            @Override
-            public int compare(Point2d p1, Point2d p2) {
+            @Override public int compare(Point2d p1, Point2d p2) {
 
                 if (p1.x == p2.x) {
                     if (p1.y == p2.y) {

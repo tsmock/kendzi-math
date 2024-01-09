@@ -34,10 +34,9 @@ import kendzi.math.geometry.skeleton.path.FaceQueue;
 
 public class CanvasDebugger implements VisualDebugger {
 
-    private static DebugLayer dv = DebugDisplay.getDebugDisplay().getDebugLayer();;
+    private static final DebugLayer dv = DebugDisplay.getDebugDisplay().getDebugLayer();
 
-    @Override
-    public void debug(FaceNode fn) {
+    @Override public void debug(FaceNode fn) {
 
         if (fn != null) {
             dv.addDebug(new DisplayFaceNode(fn, Color.red));
@@ -45,33 +44,28 @@ public class CanvasDebugger implements VisualDebugger {
 
     }
 
-    @Override
-    public void debug(FaceQueue f) {
+    @Override public void debug(FaceQueue f) {
 
         dv.addDebug(new DisplayFaceNode(f, Color.pink.darker()));
 
     }
 
-    @Override
-    public void debug(SkeletonEvent I) {
+    @Override public void debug(SkeletonEvent I) {
 
         dv.addDebug(new DisplayIntersectEntry(I, Color.red));
 
     }
 
-    @Override
-    public void debug(PriorityQueue<SkeletonEvent> queue) {
+    @Override public void debug(PriorityQueue<SkeletonEvent> queue) {
 
         dv.addDebug(new DisplayEventQueue(queue));
     }
 
-    @Override
-    public void debugSlav(Set<CircularList<Vertex>> slav) {
+    @Override public void debugSlav(Set<CircularList<Vertex>> slav) {
         dv.addDebug(new DisplaySLav(slav));
     }
 
-    @Override
-    public void debug(Set<CircularList<Vertex>> set) {
+    @Override public void debug(Set<CircularList<Vertex>> set) {
 
         for (CircularList<Vertex> circularList : set) {
             if (circularList.size() > 0) {
@@ -80,75 +74,63 @@ public class CanvasDebugger implements VisualDebugger {
         }
     }
 
-    @Override
-    public void debug(CircularList<Vertex> l) {
+    @Override public void debug(CircularList<Vertex> l) {
 
         dv.addDebug(new DisplayLav2(l, Color.ORANGE.darker().darker()));
     }
 
-    @Override
-    public void debug(SkeletonOutput pOutput) {
+    @Override public void debug(SkeletonOutput pOutput) {
 
         dv.addDebug(new DisplaySkeletonOut(pOutput));
     }
 
-    @Override
-    public void debug(LineSegment2d pLineSegment2d) {
+    @Override public void debug(LineSegment2d pLineSegment2d) {
 
         dv.addDebug(new DisplayLineSegment2d(pLineSegment2d.getBegin(), pLineSegment2d.getEnd(), Color.GRAY));
     }
 
-    @Override
-    public void debug(Point2d pPoint2d) {
+    @Override public void debug(Point2d pPoint2d) {
 
         dv.addDebug(new DisplayPoints(pPoint2d));
 
     }
 
-    @Override
-    public void debug(LineParametric2d pLineParametric2d) {
+    @Override public void debug(LineParametric2d pLineParametric2d) {
 
         dv.addDebug(new DisplayLineParametric2d(pLineParametric2d));
     }
 
-    @Override
-    public void debug(List<Point2d> polygon) {
+    @Override public void debug(List<Point2d> polygon) {
 
         dv.addDebug(new DisplayPolygon(polygon));
     }
 
-    @Override
-    public void debugNames(List<Point2d> polygon) {
+    @Override public void debugNames(List<Point2d> polygon) {
 
         dv.addDebug(new DisplayPolygonNames(polygon));
     }
 
-    @Override
-    public void debug(DisplayObject displayObject) {
+    @Override public void debug(DisplayObject displayObject) {
 
         dv.addDebug(displayObject);
     }
 
-    @Override
-    public void debugProcessedEvents(List<SkeletonEvent> processedEvents) {
+    @Override public void debugProcessedEvents(List<SkeletonEvent> processedEvents) {
 
         dv.addDebug(new DisplayEventNames(processedEvents));
     }
 
-    @Override
-    public void clear() {
+    @Override public void clear() {
 
         dv.clear();
     }
 
-    @Override
-    public void block() {
+    @Override public void block() {
 
         DebugDisplay.getDebugDisplay().block();
     }
 
-    @Override
-    public void debug(Edge edge) {
+    @Override public void debug(Edge edge) {
 
         dv.addDebug(new DisplayLineSegment2d(edge.getBegin(), edge.getEnd(), Color.GRAY.darker()));
     }

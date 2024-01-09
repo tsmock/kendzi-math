@@ -35,12 +35,9 @@ public class TransformationMatrix2d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                {1, 0 },
-                {0, cosX}
-                });
+        return new SimpleMatrix(new double[][] { { 1, 0 }, { 0, cosX } });
     }
+
     /**
      * @param alpha
      * @return
@@ -49,12 +46,7 @@ public class TransformationMatrix2d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {1, 0, 0},
-                        {0, cosX, 0},
-                        {0, 0, 1}
-                });
+        return new SimpleMatrix(new double[][] { { 1, 0, 0 }, { 0, cosX, 0 }, { 0, 0, 1 } });
     }
 
     /**
@@ -65,12 +57,9 @@ public class TransformationMatrix2d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {cosX, 0 },
-                        {0, 1 },
-                });
+        return new SimpleMatrix(new double[][] { { cosX, 0 }, { 0, 1 }, });
     }
+
     /**
      * @param alpha
      * @return
@@ -79,12 +68,7 @@ public class TransformationMatrix2d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {cosX, 0, 0},
-                        {0, 1, 0},
-                        {0, 0, 1}
-                });
+        return new SimpleMatrix(new double[][] { { cosX, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } });
     }
 
     /**
@@ -95,12 +79,9 @@ public class TransformationMatrix2d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {cosX, -sinX },
-                        {sinX, cosX }
-                });
+        return new SimpleMatrix(new double[][] { { cosX, -sinX }, { sinX, cosX } });
     }
+
     /**
      * XXX sign of alpha may change !!!
      * @param alpha
@@ -110,14 +91,8 @@ public class TransformationMatrix2d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {cosX, -sinX, 0},
-                        {sinX, cosX, 0},
-                        {0, 0, 1}
-                });
+        return new SimpleMatrix(new double[][] { { cosX, -sinX, 0 }, { sinX, cosX, 0 }, { 0, 0, 1 } });
     }
-
 
     /**
      * @param alpha
@@ -125,12 +100,7 @@ public class TransformationMatrix2d {
      */
     public static SimpleMatrix tranA(double x, double y) {
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {1, 0, x},
-                        {0, 1, y},
-                        {0, 0, 1}
-                });
+        return new SimpleMatrix(new double[][] { { 1, 0, x }, { 0, 1, y }, { 0, 0, 1 } });
     }
 
     /**
@@ -139,22 +109,11 @@ public class TransformationMatrix2d {
      */
     public static SimpleMatrix scaleA(double scaleX, double scaleY) {
 
-
-        return new SimpleMatrix(
-                new double [][] {
-                        {scaleX, 0, 0},
-                        {0, scaleY, 0},
-                        {0, 0, 1}
-                });
+        return new SimpleMatrix(new double[][] { { scaleX, 0, 0 }, { 0, scaleY, 0 }, { 0, 0, 1 } });
     }
 
     public static Point2d transform(Point2d pPoint, SimpleMatrix pSimpleMatrix) {
-        SimpleMatrix sm = new SimpleMatrix(
-                new double [][] {
-                        {pPoint.x},
-                        {pPoint.y},
-                        {1}
-                });
+        SimpleMatrix sm = new SimpleMatrix(new double[][] { { pPoint.x }, { pPoint.y }, { 1 } });
 
         SimpleMatrix mult = pSimpleMatrix.mult(sm);
 
@@ -162,12 +121,7 @@ public class TransformationMatrix2d {
     }
 
     public static Vector2d transform(Vector2d pVector, SimpleMatrix pSimpleMatrix) {
-        SimpleMatrix sm = new SimpleMatrix(
-                new double [][] {
-                        {pVector.x},
-                        {pVector.y},
-                        {0}
-                });
+        SimpleMatrix sm = new SimpleMatrix(new double[][] { { pVector.x }, { pVector.y }, { 0 } });
 
         SimpleMatrix mult = pSimpleMatrix.mult(sm);
 
@@ -177,14 +131,14 @@ public class TransformationMatrix2d {
     /** Transform list of points using transformation matrix.
      * @param pList list of points
      * @param transformLocal transformation matrix
-     * @return  transformed list of points
+     * @return transformed list of points
      */
     public static List<Point2d> transformList(List<Point2d> pList, SimpleMatrix transformLocal) {
 
         List<Point2d> list = new ArrayList<Point2d>(pList.size());
         for (Point2d p : pList) {
-           Point2d transformed = TransformationMatrix2d.transform(p, transformLocal);
-           list.add(transformed);
+            Point2d transformed = TransformationMatrix2d.transform(p, transformLocal);
+            list.add(transformed);
         }
         return list;
     }
@@ -192,16 +146,16 @@ public class TransformationMatrix2d {
     /** Transform array of points using transformation matrix.
      * @param pList array of points
      * @param transformLocal transformation matrix
-     * @return  transformed array of points
+     * @return transformed array of points
      */
     public static Point2d[] transformArray(Point2d[] pList, SimpleMatrix transformLocal) {
 
-        Point2d [] list = new Point2d[pList.length];
+        Point2d[] list = new Point2d[pList.length];
         int i = 0;
         for (Point2d p : pList) {
-           Point2d transformed = TransformationMatrix2d.transform(p, transformLocal);
-           list[i] = transformed;
-           i++;
+            Point2d transformed = TransformationMatrix2d.transform(p, transformLocal);
+            list[i] = transformed;
+            i++;
         }
         return list;
     }

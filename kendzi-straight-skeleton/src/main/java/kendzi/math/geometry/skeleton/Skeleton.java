@@ -6,7 +6,12 @@
 
 package kendzi.math.geometry.skeleton;
 
-import static kendzi.math.geometry.skeleton.utils.LavUtil.*;
+import static kendzi.math.geometry.skeleton.utils.LavUtil.cutLavPart;
+import static kendzi.math.geometry.skeleton.utils.LavUtil.isSameLav;
+import static kendzi.math.geometry.skeleton.utils.LavUtil.lavToString;
+import static kendzi.math.geometry.skeleton.utils.LavUtil.mergeBeforeBaseVertex;
+import static kendzi.math.geometry.skeleton.utils.LavUtil.moveAllVertexToLavEnd;
+import static kendzi.math.geometry.skeleton.utils.LavUtil.removeFromLav;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +25,8 @@ import java.util.Set;
 import javax.vecmath.Point2d;
 import javax.vecmath.Tuple2d;
 import javax.vecmath.Vector2d;
+
+import org.apache.log4j.Logger;
 
 import kendzi.math.geometry.Algebra;
 import kendzi.math.geometry.AngleUtil;
@@ -55,8 +62,6 @@ import kendzi.math.geometry.skeleton.path.FaceNode;
 import kendzi.math.geometry.skeleton.path.FaceQueue;
 import kendzi.math.geometry.skeleton.path.FaceQueueUtil;
 import kendzi.math.geometry.skeleton.utils.ValidateUtil;
-
-import org.apache.log4j.Logger;
 
 /**
  * Straight skeleton algorithm implementation. Base on highly modified Petr
@@ -158,10 +163,12 @@ public class Skeleton {
                 vd.debugProcessedEvents(processedEvents);
 
                 if (event instanceof EdgeEvent) {
-                    throw new IllegalStateException("all edge events should be converted to MultiEdgeEvents for given level");
+                    throw new IllegalStateException(
+                            "all edge events should be converted to MultiEdgeEvents for given level");
 
                 } else if (event instanceof SplitEvent) {
-                    throw new IllegalStateException("all split events should be converted to MultiSplitEvents for given level");
+                    throw new IllegalStateException(
+                            "all split events should be converted to MultiSplitEvents for given level");
 
                 } else if (event instanceof MultiSplitEvent) {
 
@@ -190,7 +197,8 @@ public class Skeleton {
         return addFacesToOutput(faces);
     }
 
-    private static List<List<Point2d>> initHoles(List<List<Point2d>> holes, SkeletonConfiguration skeletonConfiguration) {
+    private static List<List<Point2d>> initHoles(List<List<Point2d>> holes,
+            SkeletonConfiguration skeletonConfiguration) {
 
         if (holes == null) {
             return null;
@@ -273,15 +281,15 @@ public class Skeleton {
     }
 
     private static void removeEmptyLav(Set<CircularList<Vertex>> sLav) {
-        for (Iterator<CircularList<Vertex>> it = sLav.iterator(); it.hasNext();) {
+        for (Iterator<CircularList<Vertex>> it = sLav.iterator(); it.hasNext(); ) {
             if (it.next().size() == 0) {
                 it.remove();
             }
         }
     }
 
-    private static void multiEdgeEvent(MultiEdgeEvent event, Set<CircularList<Vertex>> sLav, PriorityQueue<SkeletonEvent> queue,
-            List<Edge> edges) {
+    private static void multiEdgeEvent(MultiEdgeEvent event, Set<CircularList<Vertex>> sLav,
+            PriorityQueue<SkeletonEvent> queue, List<Edge> edges) {
 
         Point2d center = event.getPoint();
         List<EdgeEvent> edgeList = event.getChain().getEdgeList();
@@ -293,7 +301,8 @@ public class Skeleton {
         nextVertex.setProcessed(true);
 
         Ray2d bisector = calcBisector(center, previousVertex.previousEdge, nextVertex.nextEdge);
-        Vertex edgeVertex = new Vertex(center, event.getDistance(), bisector, previousVertex.previousEdge, nextVertex.nextEdge);
+        Vertex edgeVertex = new Vertex(center, event.getDistance(), bisector, previousVertex.previousEdge,
+                nextVertex.nextEdge);
 
         // left face
         addFaceLeft(edgeVertex, previousVertex);
@@ -347,8 +356,7 @@ public class Skeleton {
 
         Comparator<ChainEnds> multiSplitSorter = new Comparator<ChainEnds>() {
 
-            @Override
-            public int compare(ChainEnds chain1, ChainEnds chain2) {
+            @Override public int compare(ChainEnds chain1, ChainEnds chain2) {
                 /*
                  * Sort it by chain edges begins, chains are sorted
                  * CounterClockwise
@@ -384,8 +392,8 @@ public class Skeleton {
             Vertex endPreviousVertex = chainEnd.getPreviousVertex();
 
             vd.debug(endPreviousVertex.getPoint());
-            correctBisectorDirection(newVertex.getBisector(), beginNextVertex, endPreviousVertex, chainBegin.getNextEdge(),
-                    chainEnd.getPreviousEdge());
+            correctBisectorDirection(newVertex.getBisector(), beginNextVertex, endPreviousVertex,
+                    chainBegin.getNextEdge(), chainEnd.getPreviousEdge());
 
             if (isSameLav(beginNextVertex, endPreviousVertex)) {
                 /*
@@ -509,14 +517,15 @@ public class Skeleton {
                 }
                 if (vertex.nextEdge != next.previousEdge) {
                     throw new IllegalStateException(String.format(
-                            "next edge don't match previous edge in next node vertex.e_b: %s next.e_a: %s", vertex.nextEdge,
-                            next.previousEdge));
+                            "next edge don't match previous edge in next node vertex.e_b: %s next.e_a: %s",
+                            vertex.nextEdge, next.previousEdge));
                 }
             }
         }
     }
 
-    private static FaceNode addSplitFaces(FaceNode lastFaceNode, ChainEnds chainBegin, ChainEnds chainEnd, Vertex newVertex) {
+    private static FaceNode addSplitFaces(FaceNode lastFaceNode, ChainEnds chainBegin, ChainEnds chainEnd,
+            Vertex newVertex) {
         if (chainBegin instanceof SingleEdgeChain) {
             /*
              * When chain is generated by opposite edge we need to share face
@@ -746,7 +755,8 @@ public class Skeleton {
 
         List<Chain> chains = new ArrayList<Chain>(edgeChains);
 
-        splitEventLoop: while (splitCluster.size() > 0) {
+        splitEventLoop:
+        while (splitCluster.size() > 0) {
             SplitEvent split = splitCluster.remove(0);
 
             for (EdgeChain chain : edgeChains) {
@@ -799,7 +809,8 @@ public class Skeleton {
         // find all predecessors of edge event
 
         // XXX check in future
-        loop: do {
+        loop:
+        do {
 
             Vertex beginVertex = edgeList.get(0).getPreviousVertex();
             Vertex endVertex = edgeList.get(edgeList.size() - 1).getNextVertex();
@@ -899,8 +910,8 @@ public class Skeleton {
         if (event instanceof SplitEvent) {
             return parentGroup.contains(((SplitEvent) event).getParent());
         } else if (event instanceof EdgeEvent) {
-            return parentGroup.contains(((EdgeEvent) event).getPreviousVertex())
-                    || parentGroup.contains(((EdgeEvent) event).getNextVertex());
+            return parentGroup.contains(((EdgeEvent) event).getPreviousVertex()) || parentGroup.contains(
+                    ((EdgeEvent) event).getNextVertex());
         }
         return false;
     }
@@ -920,7 +931,8 @@ public class Skeleton {
      * @param eventCenter
      * @return
      */
-    private static SkeletonEvent createLevelEvent(Point2d eventCenter, double distance, List<SkeletonEvent> eventCluster) {
+    private static SkeletonEvent createLevelEvent(Point2d eventCenter, double distance,
+            List<SkeletonEvent> eventCluster) {
 
         List<Chain> chains = createChains(eventCluster);
 
@@ -937,7 +949,8 @@ public class Skeleton {
 
         for (Chain chain : chains) {
             if (ChainType.CLOSED_EDGE.equals(chain.getType())) {
-                throw new RuntimeException("found closed chain of events for single point, but found more then one chain");
+                throw new RuntimeException(
+                        "found closed chain of events for single point, but found more then one chain");
             }
         }
 
@@ -949,7 +962,8 @@ public class Skeleton {
         return distance(p1, p2) < epsilon;
     }
 
-    private static void debugSteep(PriorityQueue<SkeletonEvent> queue, Set<CircularList<Vertex>> sLav, List<FaceQueue> faces) {
+    private static void debugSteep(PriorityQueue<SkeletonEvent> queue, Set<CircularList<Vertex>> sLav,
+            List<FaceQueue> faces) {
         vd.debug(queue);
 
         for (CircularList<Vertex> l : sLav) {
@@ -1014,8 +1028,7 @@ public class Skeleton {
             this.name = name;
         }
 
-        @Override
-        public String toString() {
+        @Override public String toString() {
             return name;
         }
 
@@ -1057,7 +1070,8 @@ public class Skeleton {
      * @param edges
      * @param faces
      */
-    private static void initSlav(List<Point2d> polygon, Set<CircularList<Vertex>> sLav, List<Edge> edges, List<FaceQueue> faces) {
+    private static void initSlav(List<Point2d> polygon, Set<CircularList<Vertex>> sLav, List<Edge> edges,
+            List<FaceQueue> faces) {
 
         CircularList<Edge> edgesList = new CircularList<Edge>();
 
@@ -1153,7 +1167,8 @@ public class Skeleton {
         return output;
     }
 
-    private static void initEvents(Set<CircularList<Vertex>> sLav, PriorityQueue<SkeletonEvent> queue, List<Edge> edges) {
+    private static void initEvents(Set<CircularList<Vertex>> sLav, PriorityQueue<SkeletonEvent> queue,
+            List<Edge> edges) {
 
         for (CircularList<Vertex> lav : sLav) {
             for (Vertex vertex : lav) {
@@ -1267,14 +1282,15 @@ public class Skeleton {
             queue.add(createEdgeEvent(point2, previousVertex, vertex));
         }
 
-        return distance1 < distance2 ? distance1 : distance2;
+        return Math.min(distance1, distance2);
     }
 
     private static SkeletonEvent createEdgeEvent(Point2d point, Vertex previousVertex, Vertex nextVertex) {
         return new EdgeEvent(point, calcDistance(point, previousVertex.nextEdge), previousVertex, nextVertex);
     }
 
-    private static void computeEdgeEvents(Vertex previousVertex, Vertex nextVertex, PriorityQueue<SkeletonEvent> queue) {
+    private static void computeEdgeEvents(Vertex previousVertex, Vertex nextVertex,
+            PriorityQueue<SkeletonEvent> queue) {
         Point2d point = computeIntersectionBisectors(previousVertex, nextVertex);
         if (point != null) {
             queue.add(createEdgeEvent(point, previousVertex, nextVertex));
@@ -1327,8 +1343,7 @@ public class Skeleton {
 
         Collections.sort(ret, new Comparator<SplitCandidate>() {
 
-            @Override
-            public int compare(SplitCandidate o1, SplitCandidate o2) {
+            @Override public int compare(SplitCandidate o1, SplitCandidate o2) {
                 return Double.compare(o1.distance, o2.distance);
             }
         });
@@ -1347,10 +1362,10 @@ public class Skeleton {
 
     private static class SplitCandidate {
 
-        private double distance;
-        private Point2d point;
-        private Edge oppositeEdge;
-        private Point2d oppositePoint;
+        private final double distance;
+        private final Point2d point;
+        private final Edge oppositeEdge;
+        private final Point2d oppositePoint;
 
         public SplitCandidate(Point2d point, double distance, Edge oppositeEdge, Point2d oppositePoint) {
             super();
@@ -1411,8 +1426,8 @@ public class Skeleton {
             return null;
         }
 
-        if (edge.getBisectorPrevious().isOnRightSite(candidatePoint, SPLIT_EPSILON)
-                && edge.getBisectorNext().isOnLeftSite(candidatePoint, SPLIT_EPSILON)) {
+        if (edge.getBisectorPrevious().isOnRightSite(candidatePoint, SPLIT_EPSILON) && edge.getBisectorNext()
+                .isOnLeftSite(candidatePoint, SPLIT_EPSILON)) {
 
             double distance = calcDistance(candidatePoint, edge);
 
@@ -1568,7 +1583,8 @@ public class Skeleton {
 
     }
 
-    private static List<Vertex> findEdgeLavs(Set<CircularList<Vertex>> sLav, Edge oppositeEdge, CircularList<Vertex> skippedLav) {
+    private static List<Vertex> findEdgeLavs(Set<CircularList<Vertex>> sLav, Edge oppositeEdge,
+            CircularList<Vertex> skippedLav) {
 
         List<Vertex> edgeLavs = new ArrayList<Vertex>();
 
@@ -1603,7 +1619,8 @@ public class Skeleton {
 
             Vertex currentVertex = nextVertex;
 
-            if (oppositeEdge.equals(currentVertex.previousEdge) || oppositeEdge.equals(currentVertex.previous().nextEdge)) {
+            if (oppositeEdge.equals(currentVertex.previousEdge) || oppositeEdge.equals(
+                    currentVertex.previous().nextEdge)) {
                 return i;
             }
 
@@ -1662,11 +1679,10 @@ public class Skeleton {
      *
      */
     public static class SkeletonEventDistanseComparator implements Comparator<SkeletonEvent> {
-        @Override
-        public int compare(SkeletonEvent event1, SkeletonEvent event2) {
+        @Override public int compare(SkeletonEvent event1, SkeletonEvent event2) {
             return Double.compare(event1.getDistance(), event2.getDistance());
         }
-    };
+    }
 
     private static double calcDistance(Point2d intersect, Edge currentEdge) {
         Vector2d edge = new Vector2d(currentEdge.getEnd());

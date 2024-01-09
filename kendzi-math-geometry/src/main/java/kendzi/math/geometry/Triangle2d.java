@@ -4,11 +4,11 @@ import javax.vecmath.Point2d;
 
 public class Triangle2d {
 
-    private Point2d p1;
+    private final Point2d p1;
 
-    private Point2d p2;
+    private final Point2d p2;
 
-    private Point2d p3;
+    private final Point2d p3;
 
     public Triangle2d(Point2d p1, Point2d p2, Point2d p3) {
         super();
@@ -41,6 +41,5 @@ public class Triangle2d {
     public Point2d getP3() {
         return this.p3;
     }
-
 
 }

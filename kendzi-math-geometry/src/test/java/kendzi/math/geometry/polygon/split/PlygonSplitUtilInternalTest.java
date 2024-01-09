@@ -6,15 +6,16 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.vecmath.Point2d;
 
+import org.junit.Test;
+
 import kendzi.math.geometry.line.LinePoints2d;
 import kendzi.math.geometry.polygon.split.PlygonSplitUtil.Close;
 import kendzi.math.geometry.polygon.split.PlygonSplitUtil.Node;
-
-import org.junit.Test;
 
 /**
  * Tests for internals of polygon split util.
@@ -23,8 +24,7 @@ public class PlygonSplitUtilInternalTest {
 
     private static final double EPSILON = 0.00001d;
 
-    @Test
-    public void closePolygonsSingleSquare() {
+    @Test public void closePolygonsSingleSquare() {
 
         Point2d p1 = debugPoint(0, 1, -0);
         Point2d p2 = debugPoint(1, 1, -1);
@@ -38,20 +38,19 @@ public class PlygonSplitUtilInternalTest {
 
         LinePoints2d line = new LinePoints2d(debugPoint("l1", 0, 0), debugPoint("l2", 1, 0));
 
-        @SuppressWarnings("unchecked")
-        List<Close> polygons = PlygonSplitUtil.closePolygons(Arrays.asList(Arrays.<Node> asList(n0, n1, n2, n3)), line);
+        @SuppressWarnings("unchecked") List<Close> polygons = PlygonSplitUtil.closePolygons(
+                Collections.singletonList(Arrays.<Node>asList(n0, n1, n2, n3)), line);
 
         assertEquals(1, polygons.size());
         assertEquals(Arrays.asList(n0, n1, n2, n3), polygons.get(0).chain);
 
     }
 
-    @Test
-    public void theClosestInnerClose1() {
+    @Test public void theClosestInnerClose1() {
 
         Close close1 = debugClose("c1", -0.5, 0.5, true, null);
 
-        List<Close> innerCloses = Arrays.asList(close1);
+        List<Close> innerCloses = Collections.singletonList(close1);
 
         double endDistance = -0.6666666666666666;
         double beginDistance = 0.6666666666666666;
@@ -61,7 +60,7 @@ public class PlygonSplitUtilInternalTest {
         assertEquals(close1, theClosestInnerClose);
 
         Close close2 = debugClose("c2", 0.5, -0.5, true, null);
-        List<Close> innerCloses2 = Arrays.asList(close2);
+        List<Close> innerCloses2 = Collections.singletonList(close2);
 
         endDistance = 0.6666666666666666;
         beginDistance = -0.6666666666666666;
@@ -71,8 +70,7 @@ public class PlygonSplitUtilInternalTest {
 
     }
 
-    @Test
-    public void theClosestInnerClose2() {
+    @Test public void theClosestInnerClose2() {
 
         Close close1 = debugClose("c1", 0.1, 0.5, true, null);
         Close close2 = debugClose("c2", -0.1, -0.5, true, null);
@@ -88,8 +86,7 @@ public class PlygonSplitUtilInternalTest {
 
     }
 
-    @Test
-    public void theClosestInnerClose3() {
+    @Test public void theClosestInnerClose3() {
 
         Close close1 = debugClose("c1", -0.1, -0.5, true, null);
         Close close2 = debugClose("c2", 0.1, 0.5, true, null);
@@ -105,8 +102,7 @@ public class PlygonSplitUtilInternalTest {
 
     }
 
-    @Test
-    public void close1() {
+    @Test public void close1() {
 
         Point2d p0 = debugPoint(0, -0.5, 0.0);
         Point2d p1 = debugPoint(1, 0, 1);
@@ -130,7 +126,7 @@ public class PlygonSplitUtilInternalTest {
         Close close1 = debugClose("c1", 0.6666666666666666, -0.6666666666666666, false, chain1);
         Close close2 = debugClose("c2", -0.5, 0.5, true, chain2);
 
-        PlygonSplitUtil.close(Arrays.asList(close1), Arrays.asList(close2));
+        PlygonSplitUtil.close(Collections.singletonList(close1), Collections.singletonList(close2));
 
         assertTrue(close2.removed);
         assertNull(close2.chain);
@@ -143,8 +139,7 @@ public class PlygonSplitUtilInternalTest {
     private Close debugClose(final String name, double beginDistance, double endDistance, boolean direction,
             List<Node> chain) {
         Close close = new Close() {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
             }
         };
@@ -178,8 +173,8 @@ public class PlygonSplitUtilInternalTest {
         List<Node> chain1 = Arrays.asList(n0, n1, n2);
         List<Node> chain2 = Arrays.asList(n3, n4, n5);
 
-        @SuppressWarnings("unchecked")
-        List<Close> polygons = PlygonSplitUtil.closePolygons(Arrays.asList(chain1, chain2), line);
+        @SuppressWarnings("unchecked") List<Close> polygons = PlygonSplitUtil.closePolygons(
+                Arrays.asList(chain1, chain2), line);
 
         assertEquals(1, polygons.size());
         assertEquals(Arrays.asList(n0, n1, n2, n3, n4, n5), polygons.get(0).chain);
@@ -187,16 +182,15 @@ public class PlygonSplitUtilInternalTest {
 
     private Node debugNode(final String name, Point2d point, double det) {
         Node n = new Node(point, det) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
-            };
+            }
+
         };
         return n;
     }
 
-    @Test
-    public void findRightAndLeftParts() {
+    @Test public void findRightAndLeftParts() {
 
         Node n0 = detNode("n0", -1.0);
         Node n1 = detNode("n1", -1.0);
@@ -224,8 +218,7 @@ public class PlygonSplitUtilInternalTest {
 
     private Node detNode(final String name, double d) {
         Node n = new Node(null, d) {
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
             }
         };
@@ -241,15 +234,13 @@ public class PlygonSplitUtilInternalTest {
 
             private static final long serialVersionUID = 1L;
 
-            @Override
-            public String toString() {
+            @Override public String toString() {
                 return name;
             }
         };
     }
 
-    @Test
-    public void findTheBiggestBegin() {
+    @Test public void findTheBiggestBegin() {
 
         Close close1 = debugClose("c1", 0.6, -0.6, false, null);
         Close close2 = debugClose("c2", -0.5, 0.5, false, null);
@@ -259,8 +250,7 @@ public class PlygonSplitUtilInternalTest {
         assertEquals(0.6, bigestBegin, EPSILON);
     }
 
-    @Test
-    public void findTheBiggestEnd() {
+    @Test public void findTheBiggestEnd() {
 
         Close close1 = debugClose("c1", 0.6, -0.6, false, null);
         Close close2 = debugClose("c2", -0.5, 0.5, false, null);
@@ -270,8 +260,7 @@ public class PlygonSplitUtilInternalTest {
         assertEquals(0.5, bigestBegin, EPSILON);
     }
 
-    @Test
-    public void findTheSmallestBegin() {
+    @Test public void findTheSmallestBegin() {
 
         Close close1 = debugClose("c1", 0.6, -0.6, false, null);
         Close close2 = debugClose("c2", -0.5, 0.5, false, null);

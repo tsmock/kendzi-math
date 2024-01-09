@@ -9,14 +9,14 @@ import javax.vecmath.Point2d;
 import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 /**
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  */
 public class DisplayCollectionOfPoints extends DisplayObject {
 
-    private Collection<Point2d> points;
+    private final Collection<Point2d> points;
 
-    private Color color;
+    private final Color color;
 
     /**
      * @param points
@@ -35,8 +35,7 @@ public class DisplayCollectionOfPoints extends DisplayObject {
         this.color = pColor;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.points == null) {
             return;
@@ -59,13 +58,11 @@ public class DisplayCollectionOfPoints extends DisplayObject {
         }
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.points;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
         DisplayRectBounds b = new DisplayRectBounds();
         for (Point2d p : this.points) {
             b.addPoint(p);

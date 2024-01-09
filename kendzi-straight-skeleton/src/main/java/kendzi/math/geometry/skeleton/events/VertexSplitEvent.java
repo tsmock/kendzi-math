@@ -7,7 +7,7 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 
 /**
  * @author kendzi
- * 
+ *
  */
 public class VertexSplitEvent extends SplitEvent {
 
@@ -27,14 +27,13 @@ public class VertexSplitEvent extends SplitEvent {
      * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
-        return "VertexSplitEvent [v=" + this.v + ", parent=" + (this.getParent() != null ? this.getParent().getPoint() : "null")
-                + ", distance=" + this.getDistance() + "]";
+    @Override public String toString() {
+        return "VertexSplitEvent [v=" + this.v + ", parent=" + (this.getParent() != null ?
+                this.getParent().getPoint() :
+                "null") + ", distance=" + this.getDistance() + "]";
     }
 
-    @Override
-    public Edge getOppositeEdge() {
+    @Override public Edge getOppositeEdge() {
         throw new RuntimeException("XXX");
     }
 

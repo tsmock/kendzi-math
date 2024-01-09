@@ -10,8 +10,7 @@ public class Triangle3dUtilTest {
 
     private static final double EPSILON = 1e-10;
 
-    @Test
-    public void area1() {
+    @Test public void area1() {
         Point3d a = new Point3d(0, 0, 0);
         Point3d b = new Point3d(1, 0, 0);
         Point3d c = new Point3d(0, 1, 0);
@@ -20,8 +19,7 @@ public class Triangle3dUtilTest {
         assertEquals(0.5, area, EPSILON);
     }
 
-    @Test
-    public void area2() {
+    @Test public void area2() {
         Point3d a = new Point3d(0, 0, 0);
         Point3d b = new Point3d(1, 0, 0);
         Point3d c = new Point3d(0, 0, 1);

@@ -16,7 +16,7 @@ public class DebugDisplay {
     }
 
     private JDialog frame;
-    private DebugLayer debugLayer;
+    private final DebugLayer debugLayer;
     private MapComponent mc;
 
     public DebugDisplay() {

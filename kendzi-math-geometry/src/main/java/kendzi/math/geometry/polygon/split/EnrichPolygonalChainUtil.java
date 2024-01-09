@@ -10,7 +10,7 @@ import kendzi.math.geometry.line.LineUtil;
 
 /**
  * Enrich polygonal chain by new points.
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  *
  */
@@ -46,7 +46,7 @@ public class EnrichPolygonalChainUtil {
      * @param openPolygonalChain
      *            the closed polygonal chain. Chain is assumed to be closed and
      *            don't have repeated first point at the begin and end of chain.
-     * 
+     *
      *
      * @return closed polygonal chain enriched with extra points where line is
      *         crossing original chain
@@ -82,9 +82,8 @@ public class EnrichPolygonalChainUtil {
         List<Point2d> enrichedPolygonalChain = new ArrayList<Point2d>(chainSize + 5);
 
         List<java.lang.Double> detList = new ArrayList<java.lang.Double>();
-        for (int i = 0; i < chainSize; i++) {
-            double matrixDet = LineUtil.matrixDet(splittingLine.getP1(), splittingLine.getP2(),
-                    closedPolygonalChain.get(i));
+        for (Point2d point2d : closedPolygonalChain) {
+            double matrixDet = LineUtil.matrixDet(splittingLine.getP1(), splittingLine.getP2(), point2d);
             if (equalZero(matrixDet, epsilon)) {
                 /*
                  * Check if error is too small if so assign zero as determinant.

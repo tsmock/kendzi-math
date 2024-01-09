@@ -3,10 +3,10 @@ package kendzi.math.geometry.skeleton.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import kendzi.math.geometry.skeleton.circular.CircularList;
 import kendzi.math.geometry.skeleton.circular.Vertex;
-
-import org.apache.log4j.Logger;
 
 public class LavUtil {
 
@@ -15,7 +15,7 @@ public class LavUtil {
 
     /**
      * Check if two vertex are in the same lav.
-     * 
+     *
      * @param v1
      *            vertex 1
      * @param v2
@@ -41,7 +41,7 @@ public class LavUtil {
     /**
      * Cuts all vertex after given startVertex and before endVertex. start and
      * and vertex are _included_ in cut result.
-     * 
+     *
      * @param startVertex
      *            start vertex
      * @param endVertex
@@ -51,8 +51,8 @@ public class LavUtil {
     public static List<Vertex> cutLavPart(Vertex startVertex, Vertex endVertex) {
 
         if (log.isDebugEnabled()) {
-            log.debug("cutLavPart: startVertex: " + startVertex.getPoint() + ", endVertex: " + endVertex.getPoint() + ", lav: "
-                    + lavToString(startVertex));
+            log.debug("cutLavPart: startVertex: " + startVertex.getPoint() + ", endVertex: " + endVertex.getPoint()
+                    + ", lav: " + lavToString(startVertex));
         }
 
         List<Vertex> ret = new ArrayList<Vertex>();
@@ -80,7 +80,7 @@ public class LavUtil {
     }
 
     public static String lavToString(Vertex startVertex) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         int size = startVertex.list().size();
         Vertex next = startVertex;
@@ -98,7 +98,7 @@ public class LavUtil {
     /**
      * Split given lav into two new lavs. Given vertex is not included in result
      * lavs. Split index is related from given vertex.
-     * 
+     *
      * @param vertex
      *            vertex with lav
      * @param splitIndex
@@ -113,8 +113,9 @@ public class LavUtil {
         int sizeLav = vertex.list().size();
 
         if (splitIndex < 3 || splitIndex > sizeLav - 2) {
-            throw new RuntimeException(String.format(
-                    "After split each lav need to have at least two nodes! Split index: %s lav size: %s", splitIndex, sizeLav));
+            throw new RuntimeException(
+                    String.format("After split each lav need to have at least two nodes! Split index: %s lav size: %s",
+                            splitIndex, sizeLav));
         }
 
         // skip first vertex, it will be skip in result
@@ -159,7 +160,7 @@ public class LavUtil {
      * Moves all nodes from given vertex lav, to new lav. All moved nodes are
      * added at the end of lav. The lav end is determined by first added vertex
      * to lav.
-     * 
+     *
      * @param vertex
      *            vertex
      * @param newLaw
@@ -178,7 +179,7 @@ public class LavUtil {
     /**
      * Add all vertex from "merged" lav into "base" lav. Vertex are added before
      * base vertex. Merged vertex order is reversed.
-     * 
+     *
      * @param base
      *            vertex from lav where vertex will be added
      * @param merged

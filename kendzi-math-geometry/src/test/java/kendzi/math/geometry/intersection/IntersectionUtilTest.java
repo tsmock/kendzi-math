@@ -1,6 +1,9 @@
 package kendzi.math.geometry.intersection;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
@@ -9,8 +12,7 @@ import org.junit.Test;
 
 public class IntersectionUtilTest {
 
-    @Test
-    public void intersection() {
+    @Test public void intersection() {
 
         Point3d v0 = new Point3d(-1, 0, -1);
         Point3d v1 = new Point3d(1, 0, -1);
@@ -25,8 +27,7 @@ public class IntersectionUtilTest {
 
     }
 
-    @Test
-    public void edgeIntersection() {
+    @Test public void edgeIntersection() {
 
         Point3d v0 = new Point3d(-1, 0, -1);
         Point3d v1 = new Point3d(1, 0, -1);
@@ -40,8 +41,7 @@ public class IntersectionUtilTest {
         assertTrue(intersects);
     }
 
-    @Test
-    public void behind() {
+    @Test public void behind() {
 
         Point3d v0 = new Point3d(-1, 0, -1);
         Point3d v1 = new Point3d(1, 0, -1);
@@ -55,8 +55,7 @@ public class IntersectionUtilTest {
         assertFalse(intersects);
     }
 
-    @Test
-    public void intersectionDistance() {
+    @Test public void intersectionDistance() {
 
         Point3d v0 = new Point3d(-1, 0, -1);
         Point3d v1 = new Point3d(1, 0, -1);
@@ -77,8 +76,7 @@ public class IntersectionUtilTest {
 
     }
 
-    @Test
-    public void behindDistance() {
+    @Test public void behindDistance() {
 
         Point3d v0 = new Point3d(-1, 0, -1);
         Point3d v1 = new Point3d(1, 0, -1);

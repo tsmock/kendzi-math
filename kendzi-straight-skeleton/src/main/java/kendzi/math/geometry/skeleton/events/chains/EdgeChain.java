@@ -7,9 +7,8 @@ import kendzi.math.geometry.skeleton.circular.Vertex;
 import kendzi.math.geometry.skeleton.events.EdgeEvent;
 
 public class EdgeChain extends Chain {
-    private boolean closed;
-    @Deprecated
-    private boolean split;
+    private final boolean closed;
+    @Deprecated private boolean split;
     private List<EdgeEvent> edgeList;
     private Edge oppositeEdge;
 
@@ -46,33 +45,27 @@ public class EdgeChain extends Chain {
         this.oppositeEdge = oppositeEdge;
     }
 
-    @Override
-    public Edge getPreviousEdge() {
+    @Override public Edge getPreviousEdge() {
         return edgeList.get(0).getPreviousVertex().previousEdge;
     }
 
-    @Override
-    public Edge getNextEdge() {
+    @Override public Edge getNextEdge() {
         return edgeList.get(edgeList.size() - 1).getNextVertex().nextEdge;
     }
 
-    @Override
-    public Vertex getPreviousVertex() {
+    @Override public Vertex getPreviousVertex() {
         return edgeList.get(0).getPreviousVertex();
     }
 
-    @Override
-    public Vertex getNextVertex() {
+    @Override public Vertex getNextVertex() {
         return edgeList.get(edgeList.size() - 1).getNextVertex();
     }
 
-    @Override
-    public Vertex getCurrentVertex() {
+    @Override public Vertex getCurrentVertex() {
         return null;
     }
 
-    @Override
-    public ChainType getType() {
+    @Override public ChainType getType() {
         if (closed && split) {
             throw new RuntimeException("chain can't be closed and split");
         }

@@ -14,18 +14,15 @@ public class Ray3dUtil {
 
     public static Double intersect(Ray3d ray, Point3d sphereCenter, double sphereRadius) {
 
-//        double r = sphere.getRadius();
+        //        double r = sphere.getRadius();
         double r = sphereRadius;
 
         Vector3d ray_o = new Vector3d(ray.getPoint());
         ray_o.sub(sphereCenter);
-//        ray_o.sub(sphere.getCenter());
-
+        //        ray_o.sub(sphere.getCenter());
 
         Vector3d ray_d = ray.getVector();
-//        Point3d ray_o = ray.getPoint();
-
-
+        //        Point3d ray_o = ray.getPoint();
 
         // Compute A, B and C coefficients
         double a = dot(ray_d, ray_d);
@@ -67,20 +64,20 @@ public class Ray3dUtil {
         // if t1 is less than zero, the object is in the ray's negative direction
         // and consequently the ray misses the sphere
         if (t1 < 0) {
-//            return false;
+            //            return false;
             return null;
         }
 
         // if t0 is less than zero, the intersection point is at t1
         if (t0 < 0) {
             t = t1;
-//            return true;
+            //            return true;
             return t;
         }
         // else the intersection point is at t0
         else {
             t = t0;
-//            return true;
+            //            return true;
             return t;
         }
     }
@@ -139,20 +136,20 @@ public class Ray3dUtil {
         // if t1 is less than zero, the object is in the ray's negative direction
         // and consequently the ray misses the sphere
         if (t1 < 0) {
-//            return false;
+            //            return false;
             return null;
         }
 
         // if t0 is less than zero, the intersection point is at t1
         if (t0 < 0) {
             t = t1;
-//            return true;
+            //            return true;
             return t;
         }
         // else the intersection point is at t0
         else {
             t = t0;
-//            return true;
+            //            return true;
             return t;
         }
     }
@@ -203,11 +200,7 @@ public class Ray3dUtil {
 
         double tc = (a * e - b * d) / m;
 
-        return new Point3d(
-                Q0.x + v.x * tc,
-                Q0.y + v.y * tc,
-                Q0.z + v.z * tc
-                );
+        return new Point3d(Q0.x + v.x * tc, Q0.y + v.y * tc, Q0.z + v.z * tc);
 
     }
 }

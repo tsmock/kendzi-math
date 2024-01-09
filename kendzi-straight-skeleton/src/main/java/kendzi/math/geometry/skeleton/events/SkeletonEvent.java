@@ -4,7 +4,7 @@ import javax.vecmath.Point2d;
 
 /**
  * @author kendzi
- * 
+ *
  */
 public abstract class SkeletonEvent {
 
@@ -32,8 +32,7 @@ public abstract class SkeletonEvent {
      * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "IntersectEntry [v=" + this.v + ", distance=" + this.distance + "]";
     }
 }

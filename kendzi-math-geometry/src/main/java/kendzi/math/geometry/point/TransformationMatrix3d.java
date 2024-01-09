@@ -32,13 +32,9 @@ public class TransformationMatrix3d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                {1, 0, 0 },
-                {0, cosX, -sinX},
-                {0, sinX, cosX}
-                });
+        return new SimpleMatrix(new double[][] { { 1, 0, 0 }, { 0, cosX, -sinX }, { 0, sinX, cosX } });
     }
+
     /**
      * @param alpha
      * @return
@@ -48,12 +44,7 @@ public class TransformationMatrix3d {
         double cosX = Math.cos(alpha);
 
         return new SimpleMatrix(
-                new double [][] {
-                        {1, 0, 0, 0},
-                        {0, cosX, -sinX, 0},
-                        {0, sinX, cosX, 0},
-                        {0, 0, 0, 1}
-                });
+                new double[][] { { 1, 0, 0, 0 }, { 0, cosX, -sinX, 0 }, { 0, sinX, cosX, 0 }, { 0, 0, 0, 1 } });
     }
 
     /**
@@ -64,13 +55,9 @@ public class TransformationMatrix3d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {cosX, 0, sinX },
-                        {0, 1, 0 },
-                        {-sinX, 0, cosX }
-                });
+        return new SimpleMatrix(new double[][] { { cosX, 0, sinX }, { 0, 1, 0 }, { -sinX, 0, cosX } });
     }
+
     /**
      * @param alpha
      * @return
@@ -80,12 +67,7 @@ public class TransformationMatrix3d {
         double cosX = Math.cos(alpha);
 
         return new SimpleMatrix(
-                new double [][] {
-                        {cosX, 0, sinX, 0},
-                        {0, 1, 0, 0},
-                        {-sinX, 0, cosX, 0},
-                        {0, 0, 0, 1}
-                });
+                new double[][] { { cosX, 0, sinX, 0 }, { 0, 1, 0, 0 }, { -sinX, 0, cosX, 0 }, { 0, 0, 0, 1 } });
     }
 
     /**
@@ -96,13 +78,9 @@ public class TransformationMatrix3d {
         double sinX = Math.sin(alpha);
         double cosX = Math.cos(alpha);
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {cosX, -sinX, 0 },
-                        {sinX, cosX, 0 },
-                        {0, 0, 1 }
-                });
+        return new SimpleMatrix(new double[][] { { cosX, -sinX, 0 }, { sinX, cosX, 0 }, { 0, 0, 1 } });
     }
+
     /**
      * @param alpha
      * @return
@@ -112,12 +90,7 @@ public class TransformationMatrix3d {
         double cosX = Math.cos(alpha);
 
         return new SimpleMatrix(
-                new double [][] {
-                        {cosX, -sinX, 0, 0},
-                        {sinX, cosX, 0, 0},
-                        {0, 0, 1, 0},
-                        {0, 0, 0, 1}
-                });
+                new double[][] { { cosX, -sinX, 0, 0 }, { sinX, cosX, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
     }
 
     /**
@@ -126,13 +99,7 @@ public class TransformationMatrix3d {
      */
     public static SimpleMatrix tranA(double x, double y, double z) {
 
-        return new SimpleMatrix(
-                new double [][] {
-                        {1, 0, 0, x},
-                        {0, 1, 0, y},
-                        {0, 0, 1, z},
-                        {0, 0, 0, 1}
-                });
+        return new SimpleMatrix(new double[][] { { 1, 0, 0, x }, { 0, 1, 0, y }, { 0, 0, 1, z }, { 0, 0, 0, 1 } });
     }
 
     /**
@@ -141,24 +108,12 @@ public class TransformationMatrix3d {
      */
     public static SimpleMatrix scaleA(double scaleX, double scaleY, double scaleZ) {
 
-
         return new SimpleMatrix(
-                new double [][] {
-                        {scaleX, 0, 0, 0},
-                        {0, scaleY, 0, 0},
-                        {0, 0, scaleZ, 0},
-                        {0, 0, 0, 1}
-                });
+                new double[][] { { scaleX, 0, 0, 0 }, { 0, scaleY, 0, 0 }, { 0, 0, scaleZ, 0 }, { 0, 0, 0, 1 } });
     }
 
     public static Point3d transform(Point3d pPoint, SimpleMatrix pSimpleMatrix) {
-        SimpleMatrix sm = new SimpleMatrix(
-                new double [][] {
-                        {pPoint.x},
-                        {pPoint.y},
-                        {pPoint.z},
-                        {1}
-                });
+        SimpleMatrix sm = new SimpleMatrix(new double[][] { { pPoint.x }, { pPoint.y }, { pPoint.z }, { 1 } });
 
         SimpleMatrix mult = pSimpleMatrix.mult(sm);
 
@@ -166,13 +121,7 @@ public class TransformationMatrix3d {
     }
 
     public static Vector3d transform(Vector3d pVector, SimpleMatrix pSimpleMatrix) {
-        SimpleMatrix sm = new SimpleMatrix(
-                new double [][] {
-                        {pVector.x},
-                        {pVector.y},
-                        {pVector.z},
-                        {0}
-                });
+        SimpleMatrix sm = new SimpleMatrix(new double[][] { { pVector.x }, { pVector.y }, { pVector.z }, { 0 } });
 
         SimpleMatrix mult = pSimpleMatrix.mult(sm);
 

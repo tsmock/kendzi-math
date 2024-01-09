@@ -30,7 +30,6 @@ public class LineLinear2d {
     public double B;
     public double C;
 
-
     /** Linear line.
      * @param pA A
      * @param pB B
@@ -52,8 +51,6 @@ public class LineLinear2d {
         this.C = pP1.x * pP2.y - pP2.x * pP1.y;
     }
 
-
-
     /** Collision point of two lines.
      * @param pLine line to collision
      * @return collision point
@@ -61,8 +58,6 @@ public class LineLinear2d {
     public Point2d collide(LineLinear2d pLine) {
         return collide(this, pLine);
     }
-
-
 
     /** Collision point of two lines.
      * @param A1 line 1 in linear form
@@ -75,9 +70,9 @@ public class LineLinear2d {
      */
     public static Point2d collide(double A1, double B1, double C1, double A2, double B2, double C2) {
 
-        double WAB = A1*B2 - A2*B1;
-        double WBC = B1*C2 - B2*C1;
-        double WCA = C1*A2 - C2*A1;
+        double WAB = A1 * B2 - A2 * B1;
+        double WBC = B1 * C2 - B2 * C1;
+        double WCA = C1 * A2 - C2 * A1;
 
         if (WAB == 0) {
             return null;
@@ -94,10 +89,6 @@ public class LineLinear2d {
     public static Point2d collide(LineLinear2d pLine1, LineLinear2d pLine2) {
         return collide(pLine1.A, pLine1.B, pLine1.C, pLine2.A, pLine2.B, pLine2.C);
     }
-
-
-
-
 
     /** Determinate if point is under line.
      * <img src="doc-files/LineLinear2d_point.png">

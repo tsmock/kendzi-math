@@ -11,7 +11,6 @@ import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 public class DrawUtil {
 
-
     /**
      * @param p
      * @param selected
@@ -31,7 +30,6 @@ public class DrawUtil {
         g2d.fillOval(-10 + x, -10 + y, 20, 20);
     }
 
-
     /**
      * @param current
      * @param previous
@@ -39,7 +37,8 @@ public class DrawUtil {
      * @param g2d
      * @param disp
      */
-    public static void drawLine(Point2d current, Point2d previous, boolean selected, Graphics2D g2d, EquationDisplay disp) {
+    public static void drawLine(Point2d current, Point2d previous, boolean selected, Graphics2D g2d,
+            EquationDisplay disp) {
 
         int x1 = (int) disp.xPositionToPixel(previous.x);
         int y1 = (int) disp.yPositionToPixel(previous.y);

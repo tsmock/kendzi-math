@@ -9,9 +9,9 @@ import kendzi.math.geometry.skeleton.debug.VisualDebugger;
 
 /**
  * import static kendzi.math.geometry.TestUtil.*;
- * 
+ *
  * @author Tomasz Kedziora (Kendzi)
- * 
+ *
  */
 public class TestUtil {
     public static Vector2d v(double x, double y) {

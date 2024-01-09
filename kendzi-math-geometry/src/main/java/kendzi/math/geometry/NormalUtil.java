@@ -15,7 +15,7 @@ import javax.vecmath.Vector3d;
 public class NormalUtil {
 
     /**
-     * 
+     *
      * <code>
      * <pre>
      *  N
@@ -27,7 +27,7 @@ public class NormalUtil {
      *  A--------->B
      * </pre>
      * </code>
-     * 
+     *
      * @param a
      * @param b
      * @param c
@@ -48,13 +48,11 @@ public class NormalUtil {
      * @param c_y
      * @param c_z
      * @return normal
-     * 
+     *
      * @see kendzi.math.geometry.NormalUtil#normal(Point3d, Point3d, Point3d)
      */
-    public static Vector3d normal(
-            double a_x, double a_y, double a_z,
-            double b_x, double b_y, double b_z,
-            double c_x, double c_y, double c_z) {
+    public static Vector3d normal(double a_x, double a_y, double a_z, double b_x, double b_y, double b_z, double c_x,
+            double c_y, double c_z) {
 
         double v1_x = b_x - a_x;
         double v1_y = b_y - a_y;
@@ -68,10 +66,7 @@ public class NormalUtil {
         double normal_y = -((v2_z * v1_x) - (v2_x * v1_z));
         double normal_z = (v1_x * v2_y) - (v1_y * v2_x);
 
-        double normalisationFactor = Math.sqrt(
-                (normal_x * normal_x) +
-                (normal_y * normal_y) +
-                (normal_z * normal_z));
+        double normalisationFactor = Math.sqrt((normal_x * normal_x) + (normal_y * normal_y) + (normal_z * normal_z));
 
         normal_x = normal_x / normalisationFactor;
         normal_y = normal_y / normalisationFactor;

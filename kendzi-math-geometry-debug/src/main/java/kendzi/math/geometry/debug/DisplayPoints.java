@@ -10,12 +10,12 @@ import javax.vecmath.Point2d;
 import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 /**
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  */
 public class DisplayPoints extends DisplayObject {
 
-    private List<Point2d> points;
+    private final List<Point2d> points;
     private Point2d point;
 
     /**
@@ -37,8 +37,7 @@ public class DisplayPoints extends DisplayObject {
         this.points = polygon;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.points == null) {
             return;
@@ -61,16 +60,14 @@ public class DisplayPoints extends DisplayObject {
         }
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         if (this.point != null) {
             return this.point;
         }
         return this.points;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
         DisplayRectBounds b = new DisplayRectBounds();
         b.addList(this.points);
         return b.toBount();

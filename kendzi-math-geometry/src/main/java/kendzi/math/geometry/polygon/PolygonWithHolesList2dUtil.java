@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.vecmath.Point2d;
 
-import kendzi.math.geometry.point.TransformationMatrix2d;
-
 import org.ejml.simple.SimpleMatrix;
+
+import kendzi.math.geometry.point.TransformationMatrix2d;
 
 public class PolygonWithHolesList2dUtil {
 

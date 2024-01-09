@@ -1,20 +1,20 @@
 package kendzi.math.geometry.ray;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import javax.vecmath.Point2d;
 import javax.vecmath.Vector2d;
 
-import kendzi.math.geometry.ray.Ray2d;
-import kendzi.math.geometry.ray.RayUtil;
-import kendzi.math.geometry.ray.RayUtil.IntersectPoints;
-
 import org.junit.Test;
+
+import kendzi.math.geometry.ray.RayUtil.IntersectPoints;
 
 public class RayUtilTest {
 
-    @Test
-    public void testIsPointOnRay_1() {
+    @Test public void testIsPointOnRay_1() {
 
         Point2d point = new Point2d(-2.0, 2.0);
         Ray2d ray = new Ray2d(new Point2d(-1.0, 1.0), new Vector2d(-1.0, 1.0));
@@ -22,8 +22,7 @@ public class RayUtilTest {
         assertTrue(RayUtil.isPointOnRay(point, ray, 0.0000001));
     }
 
-    @Test
-    public void testIsPointOnRay_2() {
+    @Test public void testIsPointOnRay_2() {
 
         Point2d point = new Point2d(-2.1, 2.0);
         Ray2d ray = new Ray2d(new Point2d(-1.0, 1.0), new Vector2d(-1.0, 1.0));
@@ -31,8 +30,7 @@ public class RayUtilTest {
         assertFalse(RayUtil.isPointOnRay(point, ray, 0.0000001));
     }
 
-    @Test
-    public void testIsPointOnRay_3() {
+    @Test public void testIsPointOnRay_3() {
 
         Point2d point = new Point2d(2.0, -2.0);
         Ray2d ray = new Ray2d(new Point2d(-1.0, 1.0), new Vector2d(-1.0, 1.0));
@@ -40,8 +38,7 @@ public class RayUtilTest {
         assertFalse(RayUtil.isPointOnRay(point, ray, 0.0000001));
     }
 
-    @Test
-    public void testIntersectRays2d_1() {
+    @Test public void testIntersectRays2d_1() {
         Ray2d r1 = new Ray2d(new Point2d(0, 0), new Vector2d(1, 0));
         Ray2d r2 = new Ray2d(new Point2d(0, -1), new Vector2d(1, 1));
 
@@ -49,8 +46,7 @@ public class RayUtilTest {
         assertPoint(1, 0, intersectRays2d.getIntersect());
     }
 
-    @Test
-    public void testIntersectRays2d_2() {
+    @Test public void testIntersectRays2d_2() {
         Ray2d r1 = new Ray2d(new Point2d(0, 0), new Vector2d(1, 0));
         Ray2d r2 = new Ray2d(new Point2d(0, -1), new Vector2d(1, 0));
 
@@ -58,8 +54,7 @@ public class RayUtilTest {
         assertNull(intersectRays2d.getIntersect());
     }
 
-    @Test
-    public void testIntersectRays2d_3() {
+    @Test public void testIntersectRays2d_3() {
         Ray2d r1 = new Ray2d(new Point2d(0, 0), new Vector2d(1, 0));
         Ray2d r2 = new Ray2d(new Point2d(0.5, 0), new Vector2d(1, 0));
 

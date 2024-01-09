@@ -123,8 +123,7 @@ public class Bbox2d {
         return xMin != Double.POSITIVE_INFINITY;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "Bbox2d [xMin=" + xMin + ", xMax=" + xMax + ", yMin=" + yMin + ", yMax=" + yMax + "]";
     }
 

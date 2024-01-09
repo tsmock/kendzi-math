@@ -12,7 +12,6 @@ public class DisplayRectBounds {
 
     boolean isBound = false;
 
-
     public void addPoint(Point2d p) {
 
         if (this.minX > p.x) {
@@ -33,7 +32,7 @@ public class DisplayRectBounds {
     }
 
     public void addList(List<Point2d> list) {
-        if (list == null ) {
+        if (list == null) {
             return;
         }
 

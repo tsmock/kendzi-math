@@ -14,8 +14,7 @@ public class FaceQueue extends PathQueue<FaceNode> {
      */
     private boolean closed;
 
-    @Override
-    public void addPush(PathQueueNode<FaceNode> node, PathQueueNode<FaceNode> newNode) {
+    @Override public void addPush(PathQueueNode<FaceNode> node, PathQueueNode<FaceNode> newNode) {
         if (closed) {
             throw new IllegalStateException("can't add node to closed FaceQueue");
         }

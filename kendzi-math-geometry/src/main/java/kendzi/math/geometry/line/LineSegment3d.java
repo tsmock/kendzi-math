@@ -46,8 +46,7 @@ public class LineSegment3d {
      *
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "LineSegment2d " + "(" + begin + ", " + end + ")";
     }
 }

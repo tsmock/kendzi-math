@@ -13,12 +13,12 @@ import kendzi.math.geometry.skeleton.events.SplitEvent;
 import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 /**
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  */
 public class DisplayEventNames extends DisplayObject {
 
-    private List<SkeletonEvent> events;
+    private final List<SkeletonEvent> events;
 
     public final static Color EDGE_COLOR = Color.PINK;
     public final static Color SPLIT_COLOR = new Color(127, 0, 255);
@@ -28,8 +28,7 @@ public class DisplayEventNames extends DisplayObject {
         this.events = events;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.events == null) {
             return;
@@ -63,13 +62,11 @@ public class DisplayEventNames extends DisplayObject {
 
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.events;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
         DisplayRectBounds b = new DisplayRectBounds();
         for (SkeletonEvent e : this.events) {
 

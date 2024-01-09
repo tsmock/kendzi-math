@@ -14,7 +14,7 @@ import javax.vecmath.Vector2d;
 
 /**
  * Rectangle made from point, vector, width, height.
- * 
+ *
  * @author Tomasz Kędziora (Kendzi)
  */
 public class RectanglePointVector2d {

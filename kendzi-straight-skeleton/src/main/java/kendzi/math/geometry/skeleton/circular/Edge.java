@@ -9,19 +9,19 @@ import kendzi.math.geometry.ray.Ray2d;
 
 /**
  * @author kendzi
- * 
+ *
  */
 public class Edge extends CircularNode {
 
-    private Point2d begin;
-    private Point2d end;
+    private final Point2d begin;
+    private final Point2d end;
 
     private Ray2d bisectorPrevious;
     private Ray2d bisectorNext;
 
-    private LineLinear2d lineLinear2d;
+    private final LineLinear2d lineLinear2d;
 
-    private Vector2d norm;
+    private final Vector2d norm;
 
     public Edge(Point2d begin, Point2d end) {
         this.begin = begin;
@@ -35,13 +35,11 @@ public class Edge extends CircularNode {
 
     }
 
-    @Override
-    public Edge next() {
+    @Override public Edge next() {
         return (Edge) super.next();
     }
 
-    @Override
-    public Edge previous() {
+    @Override public Edge previous() {
         return (Edge) super.previous();
     }
 
@@ -61,8 +59,7 @@ public class Edge extends CircularNode {
      * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "EdgeEntry [p1=" + this.begin + ", p2=" + this.end + "]";
     }
 

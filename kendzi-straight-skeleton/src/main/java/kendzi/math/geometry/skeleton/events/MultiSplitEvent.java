@@ -8,7 +8,7 @@ import kendzi.math.geometry.skeleton.events.chains.Chain;
 
 public class MultiSplitEvent extends SkeletonEvent {
 
-    private List<Chain> chains;
+    private final List<Chain> chains;
 
     private boolean obsolete;
 
@@ -17,8 +17,7 @@ public class MultiSplitEvent extends SkeletonEvent {
         this.chains = chains;
     }
 
-    @Override
-    public boolean isObsolete() {
+    @Override public boolean isObsolete() {
         return obsolete;
     }
 

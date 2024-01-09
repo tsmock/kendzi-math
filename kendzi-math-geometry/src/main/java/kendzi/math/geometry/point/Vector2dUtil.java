@@ -11,13 +11,13 @@ import javax.vecmath.Vector2d;
 
 /**
  * Vector 2d util.
- * 
+ *
  * @author Tomasz Kedziora (Kendzi)
- * 
+ *
  */
 public class Vector2dUtil {
 
-    private static double EPSILON = 0.00000001;
+    private static final double EPSILON = 0.00000001;
 
     public static Vector2d orthogonalLeft(Vector2d v) {
         return new Vector2d(-v.y, v.x);
@@ -78,7 +78,7 @@ public class Vector2dUtil {
 
     /**
      * Cross product for 2d is same as doc
-     * 
+     *
      * @param u
      * @param v
      * @return

@@ -13,14 +13,14 @@ import kendzi.math.geometry.skeleton.path.FaceQueue;
 import kendzi.swing.ui.panel.equation.EquationDisplay;
 
 /**
- * 
+ *
  * @author Tomasz Kędziora (kendzi)
  */
 public class DisplayFaceNode extends DisplayObject {
 
-    private FaceQueue lav;
+    private final FaceQueue lav;
 
-    private Color color;
+    private final Color color;
 
     /**
      * @param LAV
@@ -42,8 +42,7 @@ public class DisplayFaceNode extends DisplayObject {
         this.color = pColor;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.lav == null) {
             return;
@@ -75,13 +74,11 @@ public class DisplayFaceNode extends DisplayObject {
         }
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.lav;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
         return null;
     }
 }

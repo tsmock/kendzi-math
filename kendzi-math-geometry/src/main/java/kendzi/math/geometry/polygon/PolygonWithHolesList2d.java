@@ -57,6 +57,4 @@ public class PolygonWithHolesList2d {
         this.inner = inner;
     }
 
-
-
 }

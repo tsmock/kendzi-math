@@ -6,7 +6,7 @@ import kendzi.math.geometry.skeleton.events.chains.EdgeChain;
 
 public class PickEvent extends SkeletonEvent {
 
-    private EdgeChain chain;
+    private final EdgeChain chain;
 
     private boolean obsolete;
 
@@ -15,8 +15,7 @@ public class PickEvent extends SkeletonEvent {
         this.chain = chain;
     }
 
-    @Override
-    public boolean isObsolete() {
+    @Override public boolean isObsolete() {
         return obsolete;
     }
 

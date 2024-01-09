@@ -19,7 +19,7 @@ import kendzi.swing.ui.panel.equation.EquationDisplay;
  */
 public class DisplayLineLinear2d extends DisplayObject {
 
-    private LineLinear2d lineLinear2d;
+    private final LineLinear2d lineLinear2d;
 
     /**
      * @param polygon
@@ -29,8 +29,7 @@ public class DisplayLineLinear2d extends DisplayObject {
         this.lineLinear2d = lineLinear2d;
     }
 
-    @Override
-    public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
+    @Override public void draw(Graphics2D g2d, EquationDisplay disp, boolean selected) {
 
         if (this.lineLinear2d == null) {
             return;
@@ -95,13 +94,11 @@ public class DisplayLineLinear2d extends DisplayObject {
         }
     }
 
-    @Override
-    public Object drawObject() {
+    @Override public Object drawObject() {
         return this.lineLinear2d;
     }
 
-    @Override
-    public DisplayRectBounds getBounds() {
+    @Override public DisplayRectBounds getBounds() {
 
         return null;
     }
